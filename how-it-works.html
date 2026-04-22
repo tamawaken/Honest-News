@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works • Honest News</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="color-scheme" content="dark light">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="header">
+    <div class="header-content">
+      <h1>How It Works</h1>
+      <p>Transparent, practical analysis for comparing news coverage</p>
+    </div>
+    <ul class="nav">
+      <li><a href="index.html">← Back to Home</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="verify.html">Verify</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </header>
+
+  <main class="main" id="main-content">
+    <section class="how-it-works">
+      <div class="news-card" style="max-width:900px;margin:0 auto;">
+        <div class="news-content">
+          <h2 style="color:var(--primary-color);margin-top:0;">The Honest News Process</h2>
+          
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">1. Aggregate Diverse Sources</h3>
+            <p class="content-text">Articles are aggregated from outlets across the political and cultural spectrum to ensure balance and break echo chambers.</p>
+          </div>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">2. Structured Text Analysis</h3>
+            <p class="content-text">Each headline is analyzed with a repeatable scoring process for language tone, framing, and emotional intensity across viewpoints.</p>
+          </div>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">3. Extract Framing & Emotion Signals</h3>
+            <p class="content-text">We score for loaded language, polarization, and framing bias so differences are visible and reviewable.</p>
+          </div>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">4. Publish Comparable Metrics</h3>
+            <p class="content-text">Each story includes simple, comparable metrics so readers can evaluate tone, bias, and confidence at a glance.</p>
+          </div>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">5. Optional Integrity Signing</h3>
+            <p class="content-text">When available, an Ed25519 signature can be used to verify a file has not been modified after publication.</p>
+          </div>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">6. Client-Side Verification</h3>
+            <p class="content-text">Anyone can verify results in their browser using our public key. No hidden models, no secret weights, no opaque decisions.</p>
+          </div>
+
+          <div style="background:rgba(0,204,255,0.1);padding:1.5rem;border-radius:12px;margin-top:2rem;">
+            <h4 style="color:var(--primary-color);margin-top:0;">Example Output:</h4>
+            <pre style="background:rgba(0,0,0,0.3);padding:1rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;color:rgba(255,255,255,0.9);">
+BBC article:
+- 63% empathy, 21% logic, 9% skepticism, 7% shadow
+- Consensus: "Constructive / Balanced"
+- Bias vector: +0.23 Left / +0.11 Humanist
+- Framing Stability: 0.62
+- ✅ Cryptographically verified</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Honest News. Independent multi-source analysis.</p>
+    <nav class="footer-links" aria-label="Trust and policy links">
+      <a href="about.html">About</a>
+      <a href="editorial-policy.html">Editorial Policy</a>
+      <a href="corrections.html">Corrections</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="verify.html">Verification</a>
+      <a href="publish-checklist.html">Publish Checklist</a>
+    </nav>
+  </footer>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️ Light</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/tweetnacl@1.0.3/nacl.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

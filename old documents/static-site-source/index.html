@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honest News — Democratic AI Analysis | Powered by BoonMind</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Honest News shows what all sides are saying — analyzed by democratic AI, verified by cryptography. Breaks echo chambers, detects emotional manipulation, and reveals counter-narratives.">
+  <meta name="keywords" content="democratic AI, news analysis, media bias, cryptographic verification, echo chambers, transparency">
+  <meta name="color-scheme" content="dark light">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <h1>Honest News</h1>
+      <p>See what <b>all sides</b> are saying — analyzed by democratic AI, verified by cryptography.</p>
+    </div>
+    <ul class="nav">
+      <li><a href="#home">Live Feed</a></li>
+      <li><a href="how-it-works.html">How It Works ⚙️</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="verify.html">Verify</a></li>
+    </ul>
+  </header>
+
+  <main class="main">
+    <!-- Category Filters -->
+    <div class="category-filters" id="category-filters">
+      <span class="category active" data-cat="all">All</span>
+      <span class="category" data-cat="tech">Tech</span>
+      <span class="category" data-cat="ai">AI</span>
+      <span class="category" data-cat="space">Space</span>
+      <span class="category" data-cat="crypto">Crypto</span>
+      <span class="category" data-cat="climate">Climate</span>
+      <span class="category" data-cat="health">Health</span>
+      <span class="category" data-cat="energy">Energy</span>
+      <span class="category" data-cat="politics">Politics</span>
+    </div>
+
+    <!-- Benefits Band -->
+    <section class="benefits" style="margin:1rem auto;text-align:center;max-width:1000px;">
+      <p style="font-size:1rem;color:var(--text-color);opacity:0.9;">
+        🧭 Breaks echo chambers • Detects emotional manipulation (see the bias) • Completely transparent — see how it thinks • Can't lie to you (cryptographically signed)
+      </p>
+    </section>
+
+    <!-- News Grid -->
+    <div class="news-grid" id="news-container" role="main" aria-live="polite">
+      <!-- News cards will be generated here -->
+    </div>
+
+    <!-- See It Work Section -->
+    <section style="margin:2rem 0;text-align:center;">
+      <h2 style="margin-bottom:1rem;color:var(--primary-color);">See It Work</h2>
+      <ol style="max-width:700px;margin:0 auto;color:var(--text-color);opacity:0.8;line-height:1.8;text-align:left;">
+        <li>Choose a controversial headline → watch multiple perspectives load.</li>
+        <li>See opposing views side by side and their emotional tone scores.</li>
+        <li>Counter-narratives are revealed automatically.</li>
+        <li>Emotional manipulation and bias levels displayed in real time.</li>
+        <li>Each analysis is cryptographically signed for verification.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Honest News. Democratic analysis powered by BoonMind.</p>
+    <p class="footer-disclaimer">
+      Source diversity is variable per topic — we sample outlets across the spectrum and label gaps.<br>
+      Results are cryptographically signed for transparency. Verify in your browser.
+    </p>
+  </footer>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️ Light</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/tweetnacl@1.0.3/nacl.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

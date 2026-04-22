@@ -1,0 +1,14 @@
+# Verify files are at root and test the root URL
+
+# 1. Check what files are at root:
+ssh root@45.130.164.130 "ls -lh /var/www/html/*.html /var/www/html/*.css /var/www/html/*.js 2>/dev/null | head -10"
+
+# 2. Test the ROOT URL (not /honest-news/):
+ssh root@45.130.164.130 "curl -sI http://localhost/ | head -5"
+
+# 3. Test index.html specifically:
+ssh root@45.130.164.130 "curl -sI http://localhost/index.html | head -3"
+
+# 4. Check if there are any conflicting files:
+ssh root@45.130.164.130 "ls -la /var/www/html/ | grep -E '\.(html|css|js)$'"
+

@@ -1,0 +1,51 @@
+{
+  "title": "NIH reports promising preclinical pain compound with lower addiction-risk profile",
+  "url": "https://nida.nih.gov/news-events/news-releases/2026/4/nih-researchers-discover-pain-relieving-drug-with-minimal-addictive-properties",
+  "sources": [
+    {"name": "NIH / NIDA", "url": "https://nida.nih.gov/news-events/news-releases/2026/4/nih-researchers-discover-pain-relieving-drug-with-minimal-addictive-properties"},
+    {"name": "ScienceDaily", "url": "https://www.sciencedaily.com/releases/2026/04/260415043617.htm"},
+    {"name": "Newswise", "url": "https://www.newswise.com/articles/scientists-find-people-with-severe-obesity-and-heart-failure-have-weakened-heart-muscle-contractions-weight-loss-may-reverse-this-condition"}
+  ],
+  "published_at": "2026-04-22T04:20:00Z",
+  "traits": [
+    {"trait": "compassionate", "weight": 0.98},
+    {"trait": "hopeful", "weight": 0.95},
+    {"trait": "optimistic", "weight": 0.96},
+    {"trait": "cautious", "weight": 0.40}
+  ],
+  "phi_dna": {
+    "strand_a": 0.920,
+    "strand_b": 0.080,
+    "phi_link": 0.920,
+    "harmonic_freq": 1.840
+  },
+  "bias_score": 0.18,
+  "bias_vector": {"humanitarian": 0.98, "medical-progress-positive": 0.95},
+  "emotion_score": 0.87,
+  "manipulation_score": 0.12,
+  "consensus": "Compassionate / Hope-Driven",
+  "counter_narratives": [
+    "Some experts stress the findings are preclinical and need human-trial validation.",
+    "Coverage differs on addiction-risk implications versus standard opioid pathways.",
+    "Policy and access reporting focuses on cost, regulation, and translational timelines."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "compassionate", "weight": 0.098},
+      {"trait": "optimistic", "weight": 0.096},
+      {"trait": "hopeful", "weight": 0.095},
+      {"trait": "curious", "weight": 0.045},
+      {"trait": "cautious", "weight": 0.040}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "gene-therapy-neurodegenerative.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T12:30:10Z"
+}
+

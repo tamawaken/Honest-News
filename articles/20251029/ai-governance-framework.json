@@ -1,0 +1,50 @@
+{
+  "title": "Countries debate scope and enforceability of new cross-border AI governance proposals",
+  "url": "https://www.un.org/",
+  "sources": [
+    {"name": "UN News", "url": "https://news.un.org/"},
+    {"name": "Reuters", "url": "https://www.reuters.com/"},
+    {"name": "The Guardian", "url": "https://www.theguardian.com/technology"}
+  ],
+  "published_at": "2026-04-22T03:50:00Z",
+  "traits": [
+    {"trait": "collaborative", "weight": 0.75},
+    {"trait": "cautious", "weight": 0.60},
+    {"trait": "skeptical", "weight": 0.45},
+    {"trait": "optimistic", "weight": 0.65}
+  ],
+  "phi_dna": {
+    "strand_a": 0.675,
+    "strand_b": 0.325,
+    "phi_link": 0.738,
+    "harmonic_freq": 1.476
+  },
+  "bias_score": 0.35,
+  "bias_vector": {"cooperation-positive": 0.75, "regulation-cautious": 0.60},
+  "emotion_score": 0.52,
+  "manipulation_score": 0.28,
+  "consensus": "Collaborative / Governance-Focused",
+  "counter_narratives": [
+    "Skeptics question enforceability and alignment across legal jurisdictions.",
+    "Industry responses warn that unclear compliance standards could slow deployment.",
+    "Government-focused analysis stresses sovereignty, oversight capacity, and timeline realism."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "collaborative", "weight": 0.075},
+      {"trait": "optimistic", "weight": 0.065},
+      {"trait": "cautious", "weight": 0.060},
+      {"trait": "skeptical", "weight": 0.045},
+      {"trait": "curious", "weight": 0.038}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "ai-governance-framework.sig"
+  },
+  "verified": false,
+  "timestamp": "2026-04-22T04:15:10Z"
+}

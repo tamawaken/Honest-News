@@ -1,0 +1,30 @@
+# Quick verification and fix commands - copy-paste one by one:
+
+# 1. First, let's see the current config state:
+ssh root@45.130.164.130 "cat /etc/nginx/sites-available/default | grep -A 8 'location /honest-news'"
+
+# 2. Actually, the ROOT approach won't work because it changes how paths resolve.
+#    Instead, let's fix the ALIAS properly. The issue is likely the trailing slash.
+#    Here's the correct fix:
+ssh root@45.130.164.130 << 'ENDSSH'
+# Remove all existing honest-news location blocks
+sed -i '/location \/honest-news/,/^[[: $-]]*}/d' fe/com/nginx/sites-available/default
+
+# Now add the correct location block INSIDE server block (before closing })
+sed -i '/location \/cloud-cpu\/ {/,/^    }/{
+    /^    }/a\
+\
+    # Honest News static site\
+    location /honest-news {\
+        alias /var/www/html/honest-news;\
+        index index.html;\
+        try_files $uri $uri/ =404;\
+    }
+}' /etc/nginx/sites-available/default
+
+nginx -t && systemctl reload nginx && echo "✅ Fixed!"
+ENDSSH
+
+# 3. Test access:
+ssh root@45.130.164.130 "curl -I http://localhost/honest-news/ 2>&1 | head -5"
+

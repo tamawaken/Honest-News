@@ -1,0 +1,51 @@
+{
+  "title": "Fusion Power Plant Achieves 24-Hour Net Energy Gain",
+  "url": "https://science.org/fusion-24hr",
+  "sources": [
+    {"name": "Science", "url": "https://science.org/fusion-24hr"},
+    {"name": "Nature", "url": "https://nature.com/fusion-breakthrough"},
+    {"name": "The Guardian", "url": "https://theguardian.com/fusion"}
+  ],
+  "published_at": "2025-10-28T16:45:00Z",
+  "traits": [
+    {"trait": "hopeful", "weight": 0.92},
+    {"trait": "excited", "weight": 0.88},
+    {"trait": "skeptical", "weight": 0.25},
+    {"trait": "optimistic", "weight": 0.95}
+  ],
+  "phi_dna": {
+    "strand_a": 0.850,
+    "strand_b": 0.150,
+    "phi_link": 0.850,
+    "harmonic_freq": 1.700
+  },
+  "bias_score": 0.22,
+  "bias_vector": {"climate-positive": 0.92, "science-celebrating": 0.88},
+  "emotion_score": 0.75,
+  "manipulation_score": 0.18,
+  "consensus": "Hope-Driven / Climate-Solution Focused",
+  "counter_narratives": [
+    "Energy skeptics emphasize decades to commercialization.",
+    "Some question scalability and cost-effectiveness.",
+    "Alternative view: Nuclear fission is already proven technology."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "optimistic", "weight": 0.095},
+      {"trait": "hopeful", "weight": 0.092},
+      {"trait": "excited", "weight": 0.088},
+      {"trait": "curious", "weight": 0.045},
+      {"trait": "skeptical", "weight": 0.025}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "fusion-power-24hr.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T17:00:10Z"
+}
+

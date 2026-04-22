@@ -1,0 +1,51 @@
+{
+  "title": "Global Carbon Capture Shows 40% Efficiency Improvement",
+  "url": "https://climatetech.org/carbon-capture-40pct",
+  "sources": [
+    {"name": "ClimateTech", "url": "https://climatetech.org/carbon-capture-40pct"},
+    {"name": "BBC Climate", "url": "https://bbc.com/climate"},
+    {"name": "Carbon Brief", "url": "https://carbonbrief.org/capture"}
+  ],
+  "published_at": "2025-10-28T14:30:00Z",
+  "traits": [
+    {"trait": "relieved", "weight": 0.95},
+    {"trait": "hopeful", "weight": 0.98},
+    {"trait": "optimistic", "weight": 0.96},
+    {"trait": "cautious", "weight": 0.35}
+  ],
+  "phi_dna": {
+    "strand_a": 0.890,
+    "strand_b": 0.110,
+    "phi_link": 0.890,
+    "harmonic_freq": 1.780
+  },
+  "bias_score": 0.20,
+  "bias_vector": {"climate-action-positive": 0.95, "solution-focused": 0.90},
+  "emotion_score": 0.81,
+  "manipulation_score": 0.15,
+  "consensus": "Hope-Focused / Climate Solution Celebrating",
+  "counter_narratives": [
+    "Critics emphasize reduction over capture (prevention vs. treatment).",
+    "Some question scalability and permanence of storage.",
+    "Economic view: Cost-effectiveness still unproven at scale."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "hopeful", "weight": 0.098},
+      {"trait": "optimistic", "weight": 0.096},
+      {"trait": "relieved", "weight": 0.095},
+      {"trait": "curious", "weight": 0.040},
+      {"trait": "cautious", "weight": 0.035}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "carbon-capture-40pct.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T14:45:10Z"
+}
+

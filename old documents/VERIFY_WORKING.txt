@@ -1,0 +1,17 @@
+# Commands to verify the site is working:
+
+# 1. Check the full HTTP response (should see 200 OK):
+ssh root@45.130.164.130 "curl -v http://localhost/honest-news/ 2>&1 | grep -E '(HTTP|Location|Content-Type)'"
+
+# 2. Verify files are accessible:
+ssh root@45.130.164.130 "ls -la /var/www/html/honest-news/index.html"
+
+# 3. Test from outside (if DNS/domain is set up):
+# curl -I http://45.130.164.130/honest-news/
+
+# 4. Check nginx error logs if still having issues:
+ssh root@45.130.164.130 "tail -20 /var/log/nginx/error.log"
+
+# 5. Verify config is correct:
+ssh root@45.130.164.130 "grep -A 6 'location /honest-news' /etc/nginx/sites-available/default"
+

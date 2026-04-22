@@ -1,0 +1,41 @@
+# Commands to properly configure Nginx for Honest News:
+
+# 1. Find which config file Nginx is actually using:
+ssh root@45.130.164.130 "ls -la /etc/nginx/sites-enabled/"
+
+# 2. Check what config files exist:
+ssh root@45.130.164.130 "ls -la /etc/nginx/sites-available/"
+
+# 3. Check the main nginx.conf to see what's included:
+ssh root@45.130.164.130 "grep -r 'include' /etc/nginx/nginx.conf"
+
+# 4. Add location block to the ACTIVE config (run this):
+ssh root@45.130.164.130 << 'ENDSSH'
+# Find active config
+ACTIVE_CONFIG=$(ls /etc/nginx/sites-enabled/* 2>/dev/null | head -1)
+if [ -z "$ACTIVE_CONFIG" ]; then
+    ACTIVE_CONFIG="/etc/nginx/sites-available/default"
+fi
+
+echo "Using config: $ACTIVE_CONFIG"
+
+# Check if location block already exists
+if grep -q "location /honest-news" "$ACTIVE_CONFIG"; then
+    echo "Location block already exists!"
+else
+    # Add location block before the closing brace of server block
+    sed -i '/^\s*}/i\
+    # Honest News static site\
+    location /honest-news {\
+        alias /var/www/html/honest-news;\
+        index index.html;\
+        try_files $uri $uri/ /honest-news/index.html;\
+    }
+' "$ACTIVE_CONFIG"
+    echo "✅ Location block added!"
+fi
+
+# Test and reload
+nginx -t && systemctl reload nginx && echo "✅ Nginx reloaded successfully!"
+ENDSSH
+

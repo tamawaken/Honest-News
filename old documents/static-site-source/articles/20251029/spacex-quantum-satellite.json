@@ -1,0 +1,51 @@
+{
+  "title": "SpaceX Successfully Launches Quantum Communication Satellite",
+  "url": "https://spacex.com/quantum-sat",
+  "sources": [
+    {"name": "SpaceX", "url": "https://spacex.com/quantum-sat"},
+    {"name": "SpaceNews", "url": "https://spacenews.com/spacex-quantum"},
+    {"name": "Scientific American", "url": "https://scientificamerican.com/quantum-space"}
+  ],
+  "published_at": "2025-10-28T18:15:00Z",
+  "traits": [
+    {"trait": "proud", "weight": 0.88},
+    {"trait": "excited", "weight": 0.85},
+    {"trait": "cautious", "weight": 0.30},
+    {"trait": "optimistic", "weight": 0.90}
+  ],
+  "phi_dna": {
+    "strand_a": 0.800,
+    "strand_b": 0.200,
+    "phi_link": 0.800,
+    "harmonic_freq": 1.600
+  },
+  "bias_score": 0.28,
+  "bias_vector": {"achievement-positive": 0.88, "innovation-focused": 0.80},
+  "emotion_score": 0.72,
+  "manipulation_score": 0.20,
+  "consensus": "Achievement-Celebrating / Innovation-Positive",
+  "counter_narratives": [
+    "Critics question the practical applications vs. cost.",
+    "Some emphasize commercial space race concerns.",
+    "Alternative view: Focus on Earth-based priorities first."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "optimistic", "weight": 0.090},
+      {"trait": "proud", "weight": 0.088},
+      {"trait": "excited", "weight": 0.085},
+      {"trait": "curious", "weight": 0.055},
+      {"trait": "cautious", "weight": 0.030}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "spacex-quantum-satellite.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T18:30:10Z"
+}
+

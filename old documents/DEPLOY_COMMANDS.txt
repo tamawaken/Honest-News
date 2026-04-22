@@ -1,0 +1,14 @@
+# Copy-paste these commands one by one:
+
+# 1. Navigate to the static-site directory
+cd ~/Documents/BOONQEC_ORGANIZED/"CarlOS Honest News/static-site"
+
+# 2. Create deployment tarball
+tar -czf /tmp/honest-news-deploy.tar.gz index.html how-it-works.html methodology.html verify.html style.css app.js status.json articles/
+
+# 3. Upload to server (will prompt for password)
+scp /tmp/honest-news-deploy.tar.gz root@45.130.164.130:/tmp/
+
+# 4. Extract on server (will prompt for password)
+ssh root@45.130.164.130 "mkdir -p /var/www/html/honest-news && cd /var/www/html/honest-news && tar -xzf /tmp/honest-news-deploy.tar.gz && rm /tmp/honest-news-deploy.tar.gz && chown -R www-data:www-data /var/www/html/honest-news && find /var/www/html/honest-news -type f -exec chmod 644 {} \; && find /var/www/html/honest-news -type d -exec chmod 755 {} \; && echo '✅ Deployment complete!'"
+

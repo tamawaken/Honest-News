@@ -1,0 +1,51 @@
+{
+  "title": "Malaysia launches national carbon market policy while delaying carbon tax timeline",
+  "url": "https://www.eco-business.com/news/malaysia-launches-its-first-carbon-market-policy-puts-carbon-tax-on-hold/",
+  "sources": [
+    {"name": "Eco-Business", "url": "https://www.eco-business.com/news/malaysia-launches-its-first-carbon-market-policy-puts-carbon-tax-on-hold/"},
+    {"name": "GOV.UK", "url": "https://www.gov.uk/government/consultations/draft-regulations-carbon-border-adjustment-mechanism-cbam-emissions-and-verification"},
+    {"name": "Taipei Times", "url": "https://www.taipeitimes.com/News/taiwan/archives/2026/04/22/2003856060"}
+  ],
+  "published_at": "2026-04-22T04:50:00Z",
+  "traits": [
+    {"trait": "relieved", "weight": 0.95},
+    {"trait": "hopeful", "weight": 0.98},
+    {"trait": "optimistic", "weight": 0.96},
+    {"trait": "cautious", "weight": 0.35}
+  ],
+  "phi_dna": {
+    "strand_a": 0.890,
+    "strand_b": 0.110,
+    "phi_link": 0.890,
+    "harmonic_freq": 1.780
+  },
+  "bias_score": 0.20,
+  "bias_vector": {"climate-action-positive": 0.95, "solution-focused": 0.90},
+  "emotion_score": 0.81,
+  "manipulation_score": 0.15,
+  "consensus": "Hope-Focused / Climate Solution Celebrating",
+  "counter_narratives": [
+    "Some coverage frames carbon markets as practical transition tools for hard-to-abate sectors.",
+    "Skeptics emphasize verification quality, offset integrity, and policy complexity.",
+    "Industry reporting highlights competitiveness and implementation timelines."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "hopeful", "weight": 0.098},
+      {"trait": "optimistic", "weight": 0.096},
+      {"trait": "relieved", "weight": 0.095},
+      {"trait": "curious", "weight": 0.040},
+      {"trait": "cautious", "weight": 0.035}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "carbon-capture-40pct.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T14:45:10Z"
+}
+

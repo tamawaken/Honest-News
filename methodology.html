@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methodology • Honest News</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="color-scheme" content="dark light">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="header">
+    <div class="header-content">
+      <h1>Methodology</h1>
+      <p>Transparent analysis process, assumptions, and limitations</p>
+    </div>
+    <ul class="nav">
+      <li><a href="index.html">← Back to Home</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="verify.html">Verify</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </header>
+
+  <main class="main" id="main-content">
+    <section class="methodology">
+      <div class="news-card" style="max-width:900px;margin:0 auto;">
+        <div class="news-content">
+          <h2 style="color:var(--primary-color);margin-top:0;">How We Analyze News</h2>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">Source Selection</h3>
+            <p class="content-text">We aggregate articles from outlets across the political spectrum, geographic regions, and cultural backgrounds. Our goal is diversity, not neutrality — we show what different perspectives are saying, not what we think is "true."</p>
+            <p class="content-text"><strong>Limitation:</strong> Source diversity is variable per topic. Some stories have more coverage from certain perspectives. We clearly label when sources are limited.</p>
+          </div>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">Bias Measurement</h3>
+            <p class="content-text">Bias is measured with repeatable scoring rules based on wording, framing, and source comparison.</p>
+            <p class="content-text">Bias indicators are descriptive, not prescriptive. They help readers inspect framing differences rather than dictate conclusions.</p>
+          </div>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">Emotional Tone Detection</h3>
+            <p class="content-text">We detect emotional manipulation through linguistic analysis: loaded words, fear triggers, polarization patterns. This is measured, not labeled — you see the scores, not our interpretation.</p>
+          </div>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">Counter-Narrative Detection</h3>
+            <p class="content-text">By comparing multiple sources on the same topic, we automatically identify alternative framings and missing perspectives. If a story consistently frames something one way, we flag that.</p>
+          </div>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">Composite Balance Metric</h3>
+            <p class="content-text">Each article includes a composite balance metric derived from multiple measurable factors. It is a summary score, not a truth score.</p>
+            <p class="content-text">The score helps compare coverage patterns across sources and topics.</p>
+          </div>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">Data Limitations</h3>
+            <ul style="line-height:1.8;">
+              <li>Analysis reflects source data quality and bias</li>
+              <li>Counter-narratives require multiple sources — limited for niche topics</li>
+              <li>Emotional detection is technical, not absolute truth</li>
+              <li>Bias vectors are descriptive, not prescriptive</li>
+            </ul>
+          </div>
+
+          <div class="step" style="margin-bottom:2rem;">
+            <h3 style="color:var(--primary-color);margin-bottom:0.5rem;">Transparency Promise</h3>
+            <p class="content-text">Where signatures are available, you can verify in your browser that a result file has not been changed after publication.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Honest News. Independent multi-source analysis.</p>
+    <nav class="footer-links" aria-label="Trust and policy links">
+      <a href="about.html">About</a>
+      <a href="editorial-policy.html">Editorial Policy</a>
+      <a href="corrections.html">Corrections</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="verify.html">Verification</a>
+      <a href="publish-checklist.html">Publish Checklist</a>
+    </nav>
+  </footer>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️ Light</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/tweetnacl@1.0.3/nacl.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

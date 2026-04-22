@@ -1,0 +1,32 @@
+{
+  "title": "Faith, media attention, and online culture collide in youth-focused religion coverage",
+  "url": "https://apnews.com/hub/religion",
+  "source": "BBC / AP",
+  "published_at": "2026-04-22T07:50:00Z",
+  "traits": [
+    {"trait": "empathy", "weight": 0.24},
+    {"trait": "logic", "weight": 0.15},
+    {"trait": "skepticism", "weight": 0.08},
+    {"trait": "shadow", "weight": 0.53}
+  ],
+  "phi_dna": {
+    "strand_a": 0.470,
+    "strand_b": 0.530,
+    "phi_link": 0.708,
+    "harmonic_freq": 1.500
+  },
+  "bias_score": 0.2,
+  "bias_vector": {"religious": 0.45, "inspirational": 0.35},
+  "emotion_score": 0.42,
+  "manipulation_score": 0.18,
+  "consensus": "Inspirational / Low Bias",
+  "counter_narrative": "Alternative framing focuses on cultural symbolism and public reaction rather than doctrinal interpretation.",
+  "signature": {
+    "algo": "ed25519",
+    "hex": "c4d2e5f9a5b6c8d1e4f6a8b1c3d5e7f9a5b6c8d1e4f6a8b1c3d5e7f9a5b6"
+  },
+  "verified": true,
+  "timestamp": "2026-04-22T08:20:10Z",
+  "analysis_timestamp": "2026-04-22T08:20:10Z"
+}
+

@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Moscow and Kyiv trade blame as pressure grows for civilian-target truce talks",
+    "date": "20260422",
+    "slug": "zelensky-kyiv-attack",
+    "path": "/articles/20251029/zelensky-kyiv-attack.json",
+    "source": "Reuters",
+    "subtitle": "Conflict diplomacy coverage compared across international reporting",
+    "tags": ["politics", "world", "conflict"]
+  },
+  {
+    "title": "UK asylum housing debate returns as ministers review site options",
+    "date": "20260422",
+    "slug": "healey-asylum-seekers",
+    "path": "/articles/20251029/healey-asylum-seekers.json",
+    "source": "BBC / Reuters",
+    "subtitle": "Immigration policy framing and trade-offs across outlets",
+    "tags": ["politics", "immigration"]
+  },
+  {
+    "title": "Court decisions and protest rights remain flashpoint in UK public-order debate",
+    "date": "20260422",
+    "slug": "palestine-action-arrests",
+    "path": "/articles/20251029/palestine-action-arrests.json",
+    "source": "BBC / The Guardian",
+    "subtitle": "How different publications frame protest, policing, and civil liberties",
+    "tags": ["politics", "protest", "uk"]
+  },
+  {
+    "title": "Faith, media attention, and online culture collide in youth-focused religion coverage",
+    "date": "20260422",
+    "slug": "teens-gamer-saint",
+    "path": "/articles/20251029/teens-gamer-saint.json",
+    "source": "BBC / AP",
+    "subtitle": "Cultural reporting compared between secular and religious angles",
+    "tags": ["religion", "culture"]
+  },
+  {
+    "title": "F1 strategy calls reignite team-order fairness debate after race result",
+    "date": "20260422",
+    "slug": "f1-verstappen-piastri",
+    "path": "/articles/20251029/f1-verstappen-piastri.json",
+    "source": "BBC Sport / Sky Sports",
+    "subtitle": "Sports coverage tone analysis: performance, tactics, and controversy",
+    "tags": ["sports", "f1"]
+  },
+  {
+    "title": "Meta expands internal employee activity logging for AI model training",
+    "date": "20260422",
+    "slug": "apple-quantum-m5",
+    "path": "/articles/20251029/apple-quantum-m5.json",
+    "source": "Reuters / RTE",
+    "subtitle": "Tech productivity narrative versus workplace privacy concerns",
+    "tags": ["tech", "innovation"]
+  },
+  {
+    "title": "Bitcoin holds near $78,000 as U.S. exchange demand indicators strengthen",
+    "date": "20260422",
+    "slug": "bitcoin-150k",
+    "path": "/articles/20251029/bitcoin-150k.json",
+    "source": "CoinDesk",
+    "subtitle": "Market momentum coverage with risk and volatility context",
+    "tags": ["finance", "crypto"]
+  },
+  {
+    "title": "Model race tightens as major labs release stronger enterprise AI systems",
+    "date": "20260422",
+    "slug": "openai-gpt5",
+    "path": "/articles/20251029/openai-gpt5.json",
+    "source": "VentureBeat / Reuters",
+    "subtitle": "Performance claims compared with deployment and governance concerns",
+    "tags": ["ai", "tech"]
+  },
+  {
+    "title": "NASA targets May cargo mission with SpaceX for ISS science and supplies",
+    "date": "20260422",
+    "slug": "spacex-quantum-satellite",
+    "path": "/articles/20251029/spacex-quantum-satellite.json",
+    "source": "NASA",
+    "subtitle": "Space operations coverage grounded in mission logistics and payload value",
+    "tags": ["space", "innovation"]
+  },
+  {
+    "title": "Global power report says clean electricity growth met all demand increase in 2025",
+    "date": "20260422",
+    "slug": "fusion-power-24hr",
+    "path": "/articles/20251029/fusion-power-24hr.json",
+    "source": "Ember / AP",
+    "subtitle": "Energy transition progress compared with reliability and cost framing",
+    "tags": ["climate", "energy", "science"]
+  },
+  {
+    "title": "Malaysia launches national carbon market policy while delaying carbon tax timeline",
+    "date": "20260422",
+    "slug": "carbon-capture-40pct",
+    "path": "/articles/20251029/carbon-capture-40pct.json",
+    "source": "Eco-Business",
+    "subtitle": "Climate policy design compared with business competitiveness concerns",
+    "tags": ["climate", "technology"]
+  },
+  {
+    "title": "NIH reports promising preclinical pain compound with lower addiction-risk profile",
+    "date": "20260422",
+    "slug": "gene-therapy-neurodegenerative",
+    "path": "/articles/20251029/gene-therapy-neurodegenerative.json",
+    "source": "NIH / NIDA",
+    "subtitle": "Health science reporting with evidence-level and trial-stage context",
+    "tags": ["health", "science", "medical"]
+  },
+  {
+    "title": "Countries debate scope and enforceability of new cross-border AI governance proposals",
+    "date": "20260422",
+    "slug": "ai-governance-framework",
+    "path": "/articles/20251029/ai-governance-framework.json",
+    "source": "UN News / Reuters",
+    "subtitle": "Policy implementation challenges across regulatory and industry perspectives",
+    "tags": ["ai", "politics", "ethics"]
+  }
+]

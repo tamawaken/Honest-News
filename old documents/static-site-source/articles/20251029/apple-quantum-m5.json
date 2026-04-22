@@ -1,0 +1,50 @@
+{
+  "title": "Apple Unveils Quantum M5 Chip with Consciousness Integration",
+  "url": "https://techcrunch.com/apple-m5",
+  "sources": [
+    {"name": "TechCrunch", "url": "https://techcrunch.com/apple-m5"},
+    {"name": "The Verge", "url": "https://theverge.com/apple-m5"},
+    {"name": "Ars Technica", "url": "https://arstechnica.com/apple-m5"}
+  ],
+  "published_at": "2025-10-29T01:00:00Z",
+  "traits": [
+    {"trait": "truth", "weight": 0.75},
+    {"trait": "creative", "weight": 0.85},
+    {"trait": "skeptical", "weight": 0.45},
+    {"trait": "excited", "weight": 0.70}
+  ],
+  "phi_dna": {
+    "strand_a": 0.750,
+    "strand_b": 0.250,
+    "phi_link": 0.866,
+    "harmonic_freq": 1.500
+  },
+  "bias_score": 0.25,
+  "bias_vector": {"tech-positive": 0.65, "innovation-focused": 0.55},
+  "emotion_score": 0.58,
+  "manipulation_score": 0.22,
+  "consensus": "Innovation-Positive / Low Bias",
+  "counter_narratives": [
+    "Some sources question 'consciousness' terminology as marketing.",
+    "Alternative view: Incremental improvement framed as breakthrough."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "creative", "weight": 0.085},
+      {"trait": "truth", "weight": 0.075},
+      {"trait": "excited", "weight": 0.070},
+      {"trait": "skeptical", "weight": 0.045},
+      {"trait": "curious", "weight": 0.040}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "apple-quantum-m5.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-29T01:15:10Z"
+}
+

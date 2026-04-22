@@ -1,0 +1,20 @@
+# SAFER FIX - Read first, then rebuild cleanly
+
+ssh root@45.130.164.130 << 'ENDSSH'
+# Restore from backup first
+cp /etc/nginx/sites-available/boonmind.bak.before_clean /etc/nginx/sites-available/boonmind
+
+# Now let's see the structure
+echo "===== Current config structure ====="
+wc -l /etc/nginx/sites-available/boonmind
+echo ""
+
+# Find where to insert the location block (after root directive, inside server block)
+echo "===== Looking for insertion point ====="
+grep -n "root /var/www/html" /etc/nginx/sites-available/boonmind
+
+ENDSSH
+
+# Once we see the structure, we'll provide the correct fix
+
+

@@ -1,0 +1,31 @@
+# Copy and paste these commands to deploy Honest News (Gradient Hero)
+
+# 1. Navigate to folder
+cd ~/Documents/BOONQEC_ORGANIZED/"CarlOS Honest News/static-site"
+
+# 2. Create tarball
+tar -czf /tmp/honest-news-final.tar.gz \
+  index.html how-it-works.html methodology.html verify.html \
+  style.css app.js status.json articles/ 2>/dev/null
+
+# 3. Upload to server
+scp /tmp/honest-news-final.tar.gz root@45.130.164.130:/tmp/
+
+# 4. Extract on server
+ssh root@45.130.164.130 << 'ENDSSH'
+cd /var/www/html
+tar -xzf /tmp/honest-news-final.tar.gz 2>/dev/null
+rm /tmp/honest-news-final.tar.gz
+chown -R www-data:www-data *.html *.css *.js status.json articles/
+find . -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" \) | xargs chmod 644
+find . -type d | xargs chmod 755
+echo "✅ DONE!"
+ENDSSH
+
+# 5. Done!
+echo ""
+echo "✅ Deployment complete!"
+echo "🌐 Visit: http://45.130.164.130/"
+echo ""
+
+

@@ -1,0 +1,51 @@
+{
+  "title": "Bitcoin holds near $78,000 as U.S. exchange demand indicators strengthen",
+  "url": "https://www.coindesk.com/markets/2026/04/22/bitcoin-s-coinbase-premium-just-posted-its-longest-bullish-streak-since-october-s-record-high-of-usd126-000",
+  "sources": [
+    {"name": "CoinDesk", "url": "https://www.coindesk.com/markets/2026/04/22/bitcoin-s-coinbase-premium-just-posted-its-longest-bullish-streak-since-october-s-record-high-of-usd126-000"},
+    {"name": "Yahoo Finance", "url": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-price-rally-masks-35-063755144.html"},
+    {"name": "Phemex News", "url": "https://phemex.com/news/article/bitcoin-reclaims-78000-mark-amid-market-rally-75158"}
+  ],
+  "published_at": "2026-04-22T06:35:00Z",
+  "traits": [
+    {"trait": "greed", "weight": 0.72},
+    {"trait": "fear", "weight": 0.18},
+    {"trait": "optimism", "weight": 0.82},
+    {"trait": "skeptical", "weight": 0.35}
+  ],
+  "phi_dna": {
+    "strand_a": 0.770,
+    "strand_b": 0.230,
+    "phi_link": 0.770,
+    "harmonic_freq": 1.546
+  },
+  "bias_score": 0.42,
+  "bias_vector": {"bullish": 0.72, "financial": 0.65},
+  "emotion_score": 0.68,
+  "manipulation_score": 0.35,
+  "consensus": "Bullish / Market-Positive",
+  "counter_narratives": [
+    "Some analysts argue rising prices are not yet backed by strong market structure.",
+    "Others warn that short squeezes and thin liquidity can amplify volatility.",
+    "Risk-focused reporting highlights regulatory uncertainty and downside support levels."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "optimism", "weight": 0.082},
+      {"trait": "greed", "weight": 0.072},
+      {"trait": "skeptical", "weight": 0.035},
+      {"trait": "fear", "weight": 0.018},
+      {"trait": "curious", "weight": 0.032}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "bitcoin-150k.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T22:15:10Z"
+}
+

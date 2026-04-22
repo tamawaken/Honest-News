@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Zelensky condemns 'ruthless attack' after Russia hits main government building in Kyiv",
+    "date": "20251029",
+    "slug": "zelensky-kyiv-attack",
+    "path": "/articles/20251029/zelensky-kyiv-attack.json",
+    "source": "BBC News",
+    "subtitle": "Multi-perspective analysis of Ukraine conflict reporting",
+    "tags": ["politics", "world", "conflict"]
+  },
+  {
+    "title": "Healey says more military sites could house asylum seekers",
+    "date": "20251029",
+    "slug": "healey-asylum-seekers",
+    "path": "/articles/20251029/healey-asylum-seekers.json",
+    "source": "BBC News",
+    "subtitle": "Policy decision analysis across perspectives",
+    "tags": ["politics", "immigration"]
+  },
+  {
+    "title": "Arrests at rally against Palestine Action ban rise to 890",
+    "date": "20251029",
+    "slug": "palestine-action-arrests",
+    "path": "/articles/20251029/palestine-action-arrests.json",
+    "source": "BBC News",
+    "subtitle": "Protest coverage with bias analysis",
+    "tags": ["politics", "protest", "uk"]
+  },
+  {
+    "title": "Teen gamer who 'performed miracles' becomes first millennial saint",
+    "date": "20251029",
+    "slug": "teens-gamer-saint",
+    "path": "/articles/20251029/teens-gamer-saint.json",
+    "source": "BBC News",
+    "subtitle": "Religious story with secular counter-narratives",
+    "tags": ["religion", "culture"]
+  },
+  {
+    "title": "Piastri told to let Norris past as Verstappen wins",
+    "date": "20251029",
+    "slug": "f1-verstappen-piastri",
+    "path": "/articles/20251029/f1-verstappen-piastri.json",
+    "source": "BBC News",
+    "subtitle": "Sports reporting bias analysis",
+    "tags": ["sports", "f1"]
+  },
+  {
+    "title": "Apple Unveils Quantum M5 Chip with Consciousness Integration",
+    "date": "20251029",
+    "slug": "apple-quantum-m5",
+    "path": "/articles/20251029/apple-quantum-m5.json",
+    "source": "Multi-source",
+    "subtitle": "Tech innovation across multiple outlets",
+    "tags": ["tech", "innovation"]
+  },
+  {
+    "title": "Bitcoin Reaches $150,000 as Institutional Adoption Accelerates",
+    "date": "20251029",
+    "slug": "bitcoin-150k",
+    "path": "/articles/20251029/bitcoin-150k.json",
+    "source": "Multi-source",
+    "subtitle": "Crypto market coverage with environmental counter-narratives",
+    "tags": ["finance", "crypto"]
+  },
+  {
+    "title": "OpenAI Launches GPT-5 with Unprecedented Consciousness Simulation",
+    "date": "20251029",
+    "slug": "openai-gpt5",
+    "path": "/articles/20251029/openai-gpt5.json",
+    "source": "Multi-source",
+    "subtitle": "AI breakthrough with ethical concerns",
+    "tags": ["ai", "tech"]
+  },
+  {
+    "title": "SpaceX Successfully Launches Quantum Communication Satellite",
+    "date": "20251029",
+    "slug": "spacex-quantum-satellite",
+    "path": "/articles/20251029/spacex-quantum-satellite.json",
+    "source": "Multi-source",
+    "subtitle": "Space achievement with cost-benefit analysis",
+    "tags": ["space", "innovation"]
+  },
+  {
+    "title": "Fusion Power Plant Achieves 24-Hour Net Energy Gain",
+    "date": "20251029",
+    "slug": "fusion-power-24hr",
+    "path": "/articles/20251029/fusion-power-24hr.json",
+    "source": "Multi-source",
+    "subtitle": "Climate solution with commercialization skepticism",
+    "tags": ["climate", "energy", "science"]
+  },
+  {
+    "title": "Global Carbon Capture Shows 40% Efficiency Improvement",
+    "date": "20251029",
+    "slug": "carbon-capture-40pct",
+    "path": "/articles/20251029/carbon-capture-40pct.json",
+    "source": "Multi-source",
+    "subtitle": "Climate tech with reduction vs capture debate",
+    "tags": ["climate", "technology"]
+  },
+  {
+    "title": "Gene Therapy Breakthrough for Neurodegenerative Diseases",
+    "date": "20251029",
+    "slug": "gene-therapy-neurodegenerative",
+    "path": "/articles/20251029/gene-therapy-neurodegenerative.json",
+    "source": "Multi-source",
+    "subtitle": "Medical breakthrough with ethical considerations",
+    "tags": ["health", "science", "medical"]
+  },
+  {
+    "title": "47 Nations Sign International AI Consciousness Framework",
+    "date": "20251029",
+    "slug": "ai-consciousness-framework",
+    "path": "/articles/20251029/ai-consciousness-framework.json",
+    "source": "Multi-source",
+    "subtitle": "Global governance with implementation questions",
+    "tags": ["ai", "politics", "ethics"]
+  }
+]

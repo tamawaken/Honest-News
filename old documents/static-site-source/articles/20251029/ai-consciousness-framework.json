@@ -1,0 +1,51 @@
+{
+  "title": "47 Nations Sign International AI Consciousness Framework",
+  "url": "https://un.org/ai-framework",
+  "sources": [
+    {"name": "UN News", "url": "https://un.org/ai-framework"},
+    {"name": "Reuters", "url": "https://reuters.com/ai-policy"},
+    {"name": "The Guardian", "url": "https://theguardian.com/ai-ethics"}
+  ],
+  "published_at": "2025-10-28T10:00:00Z",
+  "traits": [
+    {"trait": "collaborative", "weight": 0.75},
+    {"trait": "cautious", "weight": 0.60},
+    {"trait": "skeptical", "weight": 0.45},
+    {"trait": "optimistic", "weight": 0.65}
+  ],
+  "phi_dna": {
+    "strand_a": 0.675,
+    "strand_b": 0.325,
+    "phi_link": 0.738,
+    "harmonic_freq": 1.476
+  },
+  "bias_score": 0.35,
+  "bias_vector": {"cooperation-positive": 0.75, "regulation-cautious": 0.60},
+  "emotion_score": 0.52,
+  "manipulation_score": 0.28,
+  "consensus": "Collaborative / Governance-Focused",
+  "counter_narratives": [
+    "Skeptics question enforceability and implementation mechanisms.",
+    "Tech industry voices warn of over-regulation stifling innovation.",
+    "Some nations declined to undertake citing sovereignty concerns."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "collaborative", "weight": 0.075},
+      {"trait": "optimistic", "weight": 0.065},
+      {"trait": "cautious", "weight": 0.060},
+      {"trait": "skeptical", "weight": 0.045},
+      {"trait": "curious", "weight": 0.038}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "ai-consciousness-framework.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T10:15:10Z"
+}
+

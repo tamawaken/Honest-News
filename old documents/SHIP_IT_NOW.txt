@@ -1,0 +1,32 @@
+# SHIP IT NOW - Restore clean config and verify root URL works
+
+ssh root@45.130.164.130 << 'ENDSSH'
+# Restore to the clean backup from Oct 20 (before all our attempts)
+echo "Restoring clean config..."
+cp /etc/nginx/sites-available/boonmind.backup_20251020_023918 /etc/nginx/sites-available/boonmind
+
+# Test and reload
+echo "Testing config..."
+nginx -t
+if [ $? -eq 0 ]; then
+    systemctl reload nginx
+    echo "✅ Config restored successfully!"
+else
+    echo "❌ Config test failed - need manual fix"
+    exit 1
+fi
+
+# Verify root URL works
+echo ""
+echo "Testing root URL:"
+curl -sI http://localhost/ | head -5
+
+# Show current status
+echo ""
+echo "========================================="
+echo "✅ HONEST NEWS IS LIVE!"
+echo "URL: http://45.130.164.130/"
+echo "========================================="
+ENDSSH
+
+

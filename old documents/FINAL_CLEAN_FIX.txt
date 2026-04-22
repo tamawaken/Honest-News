@@ -1,0 +1,44 @@
+# Run this ONE command to fix everything:
+
+ssh root@45.130.164.130 << 'ENDSSH'
+# Backup original
+cp /etc/nginx/sites-available/boonmind /etc/nginx/sites-available/boonmind.bak.before_clean
+
+# Remove ALL duplicate/location blocks - we'll add the correct one after
+sed -i '/# Honest News/,/^    }/d' /etc/nginx/sites-available/boonmind
+sed -i '/location = \/honest-news/,/^    }/d' /etc/nginx/sites-available/boonmind
+sed -i '/location \^~ \/honest-news/,/^    }/d' /etc/nginx/sites-available/boonmind
+sed -i '/# Honest News static site/,/^    }/d' /etc/nginx/sites-available/boonmind
+sed -i '/# quiet favicon lookups/,/^    }/d' /etc/nginx/sites-available/boonmind
+
+# Remove any orphaned blocks after the last server block
+sed -i '/^server {/,/^}$/!d' /etc/nginx/sites-available/boonmind
+sed -i '$a\
+}' /etc/nginx/sites-available/boonmind
+
+# Now add ONE correct location block INSIDE the first server block
+# Right after the root directive (line 5)
+sed -i '/^    root \/var\/www\/html;/a\
+\
+    # Honest News\
+    location /honest-news/ {\
+        alias /var/www/html/honest-news/;\
+        index index.html;\
+        try_files $uri $uri/ /honest-news/index.html;\
+    }' /etc/nginx/sites-available/boonmind
+
+echo "Testing config..."
+if nginx -t; then
+    systemctl reload nginx
+    echo "✅ SUCCESS! Nginx reloaded"
+    
+    echo ""
+    echo "Testing URLs:"
+    curl -sI http://localhost/ | head -3
+    curl -sI http://localhost/honest-news/ | head -3
+else
+    echo "❌ Config test failed - using backup"
+    cp /etc/nginx/sites-available/boonmind.bak.before_clean /etc/nginx/sites-available/boonmind
+fi
+ENDSSH
+

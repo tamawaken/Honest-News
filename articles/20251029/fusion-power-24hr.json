@@ -1,0 +1,51 @@
+{
+  "title": "Global power report says clean electricity growth met all demand increase in 2025",
+  "url": "https://ember-energy.org/latest-insights/global-electricity-review-2026/",
+  "sources": [
+    {"name": "Ember", "url": "https://ember-energy.org/latest-insights/global-electricity-review-2026/"},
+    {"name": "AP", "url": "https://www.ocregister.com/2026/04/21/renewable-energies-global-electricity-demand/"},
+    {"name": "Carbon Brief", "url": "https://www.carbonbrief.org/clean-energy-pushes-fossil-fuel-power-into-reverse-for-first-time-ever/"}
+  ],
+  "published_at": "2026-04-22T05:20:00Z",
+  "traits": [
+    {"trait": "hopeful", "weight": 0.92},
+    {"trait": "excited", "weight": 0.88},
+    {"trait": "skeptical", "weight": 0.25},
+    {"trait": "optimistic", "weight": 0.95}
+  ],
+  "phi_dna": {
+    "strand_a": 0.850,
+    "strand_b": 0.150,
+    "phi_link": 0.850,
+    "harmonic_freq": 1.700
+  },
+  "bias_score": 0.22,
+  "bias_vector": {"climate-positive": 0.92, "science-celebrating": 0.88},
+  "emotion_score": 0.75,
+  "manipulation_score": 0.18,
+  "consensus": "Hope-Driven / Climate-Solution Focused",
+  "counter_narratives": [
+    "Some analysis highlights structural progress in renewables and fossil decline.",
+    "Other reporting emphasizes regional unevenness and grid-reliability constraints.",
+    "Policy-focused pieces stress that demand growth still pressures transition timelines."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "optimistic", "weight": 0.095},
+      {"trait": "hopeful", "weight": 0.092},
+      {"trait": "excited", "weight": 0.088},
+      {"trait": "curious", "weight": 0.045},
+      {"trait": "skeptical", "weight": 0.025}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "fusion-power-24hr.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T17:00:10Z"
+}
+

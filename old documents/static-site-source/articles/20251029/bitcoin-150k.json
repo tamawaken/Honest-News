@@ -1,0 +1,51 @@
+{
+  "title": "Bitcoin Reaches $150,000 as Institutional Adoption Accelerates",
+  "url": "https://coindesk.com/bitcoin-150k",
+  "sources": [
+    {"name": "CoinDesk", "url": "https://coindesk.com/bitcoin-150k"},
+    {"name": "Bloomberg", "url": "https://bloomberg.com/crypto"},
+    {"name": "Reuters", "url": "https://reuters.com/finance/bitcoin"}
+  ],
+  "published_at": "2025-10-28T22:00:00Z",
+  "traits": [
+    {"trait": "greed", "weight": 0.72},
+    {"trait": "fear", "weight": 0.18},
+    {"trait": "optimism", "weight": 0.82},
+    {"trait": "skeptical", "weight": 0.35}
+  ],
+  "phi_dna": {
+    "strand_a": 0.770,
+    "strand_b": 0.230,
+    "phi_link": 0.770,
+    "harmonic_freq": 1.546
+  },
+  "bias_score": 0.42,
+  "bias_vector": {"bullish": 0.72, "financial": 0.65},
+  "emotion_score": 0.68,
+  "manipulation_score": 0.35,
+  "consensus": "Bullish / Market-Positive",
+  "counter_narratives": [
+    "Alternative view: Price surge driven by speculation, not fundamentals.",
+    "Environmental critics emphasize energy consumption concerns.",
+    "Regulatory warnings about volatility and investor protection."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "optimism", "weight": 0.082},
+      {"trait": "greed", "weight": 0.072},
+      {"trait": "skeptical", "weight": 0.035},
+      {"trait": "fear", "weight": 0.018},
+      {"trait": "curious", "weight": 0.032}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "bitcoin-150k.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T22:15:10Z"
+}
+

@@ -1,0 +1,8 @@
+# ⚡ THE 30-SECOND FIX - Move files to document root
+# This avoids all the location block complexity
+
+ssh root@45.130.164.130 "cp -r /var/www/html/honest-news/* /var/www/html/ && chown -R www-data:www-data /var/www/html/*.html /var/www/html/*.css /var/www/html/*.js /var/www/html/articles /var/www/html/status.json 2>/dev/null; chmod 644 /var/www/html/*.html /var/www/html/*.css /var/www/html/*.js /var/www/html/status.json 2>/dev/null; find /var/www/html/articles -type f -exec chmod 644 {} \; 2>/dev/null; systemctl reload nginx && echo '✅ DONE. Site now at http://45.130.164.130/'"
+
+# Test it:
+# curl http://45.130.164.130/
+

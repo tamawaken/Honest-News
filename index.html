@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honest News — Multi-Source News Analysis</title>
+  <meta name="description" content="Honest News shows coverage from multiple perspectives, highlights framing differences, and provides transparent article-level analysis with verification tools.">
+  <meta name="keywords" content="news analysis, media bias, source comparison, article verification, transparency">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta property="og:title" content="Honest News — Multi-Source News Analysis">
+  <meta property="og:description" content="Transparent, practical news analysis with source and framing comparison.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsMediaOrganization",
+      "name": "Honest News",
+      "description": "Transparent multi-source news analysis with practical verification tools.",
+      "publishingPrinciples": "editorial-policy.html",
+      "correctionsPolicy": "corrections.html",
+      "ethicsPolicy": "methodology.html"
+    }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="header" role="banner">
+    <div class="header-content">
+      <h1>Honest News</h1>
+      <p>See what <b>different sources</b> are saying — compared with clear, practical analysis.</p>
+    </div>
+    <ul class="nav" aria-label="Primary">
+      <li><a href="#home">Live Feed</a></li>
+      <li><a href="how-it-works.html">How It Works ⚙️</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="verify.html">Verify</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </header>
+
+  <main class="main" id="main-content">
+    <div id="home" aria-hidden="true"></div>
+    <section class="site-meta" aria-live="polite">
+      <strong>Transparency:</strong>
+      <span id="status-meta">Loading publication status...</span>
+      <span> | LIVE badge = external feed; no badge = local fallback</span>
+    </section>
+
+    <div class="category-filters" id="category-filters" role="toolbar" aria-label="Filter by topic">
+      <button class="category active" data-cat="all" type="button">All</button>
+      <button class="category" data-cat="tech" type="button">Tech</button>
+      <button class="category" data-cat="ai" type="button">AI</button>
+      <button class="category" data-cat="space" type="button">Space</button>
+      <button class="category" data-cat="crypto" type="button">Crypto</button>
+      <button class="category" data-cat="climate" type="button">Climate</button>
+      <button class="category" data-cat="health" type="button">Health</button>
+      <button class="category" data-cat="energy" type="button">Energy</button>
+      <button class="category" data-cat="politics" type="button">Politics</button>
+    </div>
+
+    <section class="benefits" style="margin:1rem auto;text-align:center;max-width:1000px;">
+      <p style="font-size:1rem;color:var(--text-color);opacity:0.9;">
+        🧭 Compare perspectives • Spot loaded framing • Review method notes • Verify file integrity when signatures are available
+      </p>
+    </section>
+
+    <div class="news-grid" id="news-container" aria-live="polite">
+    </div>
+
+    <section style="margin:2rem 0;text-align:center;">
+      <h2 style="margin-bottom:1rem;color:var(--primary-color);">See It Work</h2>
+      <ol style="max-width:700px;margin:0 auto;color:var(--text-color);opacity:0.8;line-height:1.8;text-align:left;">
+        <li>Choose a controversial headline → watch multiple perspectives load.</li>
+        <li>See opposing views side by side and their emotional tone scores.</li>
+        <li>Counter-narratives are revealed automatically.</li>
+        <li>Emotional manipulation and bias levels displayed in real time.</li>
+        <li>Each analysis is cryptographically signed for verification.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p>© 2025 Honest News. Independent multi-source analysis.</p>
+    <p class="footer-disclaimer">
+      Source diversity is variable per topic — we sample outlets across the spectrum and label gaps.<br>
+      Where signatures are provided, you can verify file integrity in your browser.
+    </p>
+    <nav class="footer-links" aria-label="Trust and policy links">
+      <a href="about.html">About</a>
+      <a href="editorial-policy.html">Editorial Policy</a>
+      <a href="corrections.html">Corrections</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="verify.html">Verification</a>
+      <a href="publish-checklist.html">Publish Checklist</a>
+    </nav>
+  </footer>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️ Light</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/tweetnacl@1.0.3/nacl.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

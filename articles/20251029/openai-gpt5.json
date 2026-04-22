@@ -1,0 +1,51 @@
+{
+  "title": "Model race tightens as major labs release stronger enterprise AI systems",
+  "url": "https://venturebeat.com/technology/anthropic-releases-claude-opus-4-7-narrowly-retaking-lead-for-most-powerful-generally-available-llm",
+  "sources": [
+    {"name": "VentureBeat", "url": "https://venturebeat.com/technology/anthropic-releases-claude-opus-4-7-narrowly-retaking-lead-for-most-powerful-generally-available-llm"},
+    {"name": "SiliconANGLE", "url": "https://siliconangle.com/2026/04/15/deepmind-launches-gemini-robotics-er-1-6-meet-precise-physical-ai-demands/"},
+    {"name": "Reuters", "url": "https://www.reuters.com/"}
+  ],
+  "published_at": "2026-04-22T06:10:00Z",
+  "traits": [
+    {"trait": "excited", "weight": 0.78},
+    {"trait": "cautious", "weight": 0.45},
+    {"trait": "skeptical", "weight": 0.68},
+    {"trait": "optimistic", "weight": 0.75}
+  ],
+  "phi_dna": {
+    "strand_a": 0.765,
+    "strand_b": 0.235,
+    "phi_link": 0.765,
+    "harmonic_freq": 1.530
+  },
+  "bias_score": 0.38,
+  "bias_vector": {"tech-positive": 0.75, "innovation-focused": 0.68},
+  "emotion_score": 0.61,
+  "manipulation_score": 0.28,
+  "consensus": "Cautiously Optimistic / Tech-Forward",
+  "counter_narratives": [
+    "Some reports emphasize benchmark gains while noting narrow margins between top models.",
+    "Enterprise coverage highlights deployment cost, governance, and reliability constraints.",
+    "Skeptical analysis questions how much benchmark progress translates into production value."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "excited", "weight": 0.078},
+      {"trait": "optimistic", "weight": 0.075},
+      {"trait": "skeptical", "weight": 0.068},
+      {"trait": "cautious", "weight": 0.045},
+      {"trait": "curious", "weight": 0.058}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "openai-gpt5.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T20:45:10Z"
+}
+

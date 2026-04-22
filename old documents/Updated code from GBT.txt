@@ -1,0 +1,466 @@
+﻿index.html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Honest News — See Every Side</title>
+  <link rel="preload" href="/style.css" as="style" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="color-scheme" content="dark light" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="/" class="logo">
+          <span class="logo-mark">∞</span>
+          <span class="logo-text">Honest News</span>
+        </a>
+      </div>
+      <nav class="nav">
+        <a href="/how-it-works.html">How it works</a>
+        <a href="/methodology.html">Methodology</a>
+        <a href="/verify.html">Verify</a>
+        <button id="themeToggle" class="btn btn-ghost" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">See what <span class="grad">all sides</span> say about any story.</h1>
+      <p class="hero-sub">
+        Analyzed by democratic AI. Results are cryptographically signed — verify in your browser.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" id="tryExample">Try an example</a>
+        <a class="btn btn-outline" href="#beta">Apply for API beta</a>
+      </div>
+      <p class="disclaimer">
+        Source diversity varies by topic — we sample outlets across the spectrum and label gaps.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- Live Metrics -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Live status</h2>
+      <div class="metric-grid" id="metrics">
+        <div class="metric">
+          <div class="metric-label">Articles analyzed</div>
+          <div class="metric-value" id="m-articles">—</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Signed reports</div>
+          <div class="metric-value" id="m-signed">—</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Sources tracked</div>
+          <div class="metric-value" id="m-sources">—</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Last update</div>
+          <div class="metric-value" id="m-updated">—</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Comparison Card (context > raw numbers) -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Why it matters</h2>
+      <div class="compare">
+        <div class="compare-item">
+          <div class="compare-kicker">Echo chamber</div>
+          <div class="compare-value bad">Single viewpoint</div>
+          <div class="compare-sub">Algorithmic bubbles hide context</div>
+        </div>
+        <div class="compare-item arrow">→</div>
+        <div class="compare-item">
+          <div class="compare-kicker">Honest News</div>
+          <div class="compare-value good">Multi-perspective</div>
+          <div class="compare-sub">Opposing coverage, side-by-side</div>
+        </div>
+        <div class="compare-item arrow">→</div>
+        <div class="compare-item">
+          <div class="compare-kicker">Verification</div>
+          <div class="compare-value grad">Signed &amp; verifiable</div>
+          <div class="compare-sub">Ed25519 signatures, client-side checks</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Articles (from /manifest.json + /articles/...) -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Recent analyses</h2>
+      <div id="articles" class="card-grid"></div>
+    </div>
+  </section>
+
+
+  <!-- Beta CTA -->
+  <section id="beta" class="section">
+    <div class="container">
+      <div class="beta-card">
+        <div class="beta-copy">
+          <h3>Closed beta (technical users)</h3>
+          <p>
+            We’re inviting a limited group to validate our pipeline, bias maps, and signatures.
+            ML/DS, research, and newsroom engineers welcome.
+          </p>
+          <ul class="bullet">
+            <li>Full access to signed reports</li>
+            <li>In-browser verification tooling</li>
+            <li>Early pricing lock-in</li>
+          </ul>
+        </div>
+        <form id="betaForm" class="beta-form" novalidate>
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            <span>Role</span>
+            <input type="text" name="role" placeholder="ML Engineer, Reporter, Researcher…" />
+          </label>
+          <label>
+            <span>Use case</span>
+            <textarea name="usecase" rows="3" placeholder="Briefly describe how you’d use Honest News"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">Request access</button>
+          <p id="betaMsg" class="beta-msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© 2025 Honest News — <span class="grad">Democratic analysis</span>, cryptographically verified.</div>
+      <div class="footer-links">
+        <a href="/how-it-works.html">How it works</a>
+        <a href="/methodology.html">Methodology</a>
+        <a href="/verify.html">Verify</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
+
+
+________________
+
+
+style.css
+:root {
+  --bg: #0a0f12;
+  --card: #0f1418;
+  --card-2: #121a20;
+  --text: #e8f1f5;
+  --muted: #9ab0bc;
+  --line: #1e2a32;
+  --good: #66ffa8;
+  --bad: #ff6b6b;
+  --grad-a: #00e5ff;
+  --grad-b: #66ffa8;
+  --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+
+html[data-theme="light"] {
+  --bg: #f7fbfc;
+  --card: #ffffff;
+  --card-2: #f2f7f9;
+  --text: #0a0f12;
+  --muted: #475a65;
+  --line: #e3eef3;
+  --shadow: 0 8px 24px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.5);
+}
+
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: radial-gradient(1200px 800px at 80% -20%, rgba(0,229,255,.08), transparent 60%),
+              radial-gradient(1000px 600px at -10% 10%, rgba(102,255,168,.06), transparent 60%),
+              var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+
+.container { width: min(1200px, 92vw); margin-inline: auto; }
+
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: saturate(1.1) blur(10px);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between; padding: 16px 0;
+}
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-mark {
+  display: grid; place-items: center;
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+  color: #001318; font-weight: 800; font-size: 18px;
+  box-shadow: var(--shadow);
+}
+.logo-text {
+  font-weight: 800; font-size: 18px;
+  background: linear-gradient(90deg, var(--grad-a), var(--grad-b));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+
+.nav { display: flex; align-items: center; gap: 16px; }
+.nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
+.nav a:hover { color: var(--text); }
+.btn { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1rem; border-radius: 10px; font-weight: 700; cursor: pointer; border: 1px solid transparent; }
+.btn-ghost { background: transparent; color: var(--text); border-color: var(--line); }
+.btn-primary { background: linear-gradient(90deg, var(--grad-a), var(--grad-b)); color: #001318; box-shadow: var(--shadow); }
+.btn-outline { background: transparent; border-color: color-mix(in srgb, var(--grad-a) 40%, var(--line)); color: var(--text); }
+.btn-primary:hover { filter: saturate(1.1); transform: translateY(-1px); }
+.btn-outline:hover { border-color: var(--grad-a); }
+
+
+.hero { padding: 64px 0 28px; }
+.hero-title { font-size: clamp(28px, 4vw, 44px); margin: 0 0 10px; letter-spacing: -0.02em; }
+.grad { background: linear-gradient(90deg, var(--grad-a), var(--grad-b)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-sub { color: var(--muted); max-width: 850px; margin: 0 0 18px; }
+.hero-ctas { display: flex; gap: 12px; margin: 16px 0 8px; flex-wrap: wrap; }
+.disclaimer { color: var(--muted); font-size: .9rem; margin-top: 4px; }
+
+
+.section { padding: 30px 0; }
+.section-title { font-size: 20px; margin: 0 0 14px; }
+
+
+.metric-grid {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.metric {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 14px; padding: 14px; box-shadow: var(--shadow);
+}
+.metric-label { color: var(--muted); font-size: .85rem; }
+.metric-value { font-size: 26px; font-weight: 800; margin-top: 2px; letter-spacing: -.02em; }
+
+
+.compare {
+  display: grid; gap: 12px; grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: stretch;
+}
+.compare-item {
+  background: var(--card-2); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px; box-shadow: var(--shadow);
+}
+.compare-kicker { color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: .72rem; }
+.compare-value { font-size: 18px; font-weight: 800; margin: 6px 0 2px; }
+.compare-sub { color: var(--muted); font-size: .95rem; }
+.compare-item.arrow { display: grid; place-items: center; background: transparent; border: none; box-shadow: none; color: var(--muted); font-weight: 900; font-size: 20px; }
+.good { color: var(--good); }
+.bad { color: var(--bad); }
+
+
+.card-grid {
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px; display: grid; gap: 8px; box-shadow: var(--shadow);
+}
+.card h3 { margin: 0; font-size: 18px; }
+.card .meta { color: var(--muted); font-size: .85rem; display: flex; gap: 8px; flex-wrap: wrap; }
+.card .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  padding: 4px 8px; border-radius: 999px; font-size: .75rem;
+  background: color-mix(in srgb, var(--grad-a) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--grad-a) 40%, var(--line));
+}
+.tag.bias-high { background: color-mix(in srgb, var(--bad) 14%, transparent); border-color: color-mix(in srgb, var(--bad) 40%, var(--line)); }
+
+
+.beta-card {
+  display: grid; gap: 16px; grid-template-columns: 1.2fr 1fr;
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; box-shadow: var(--shadow);
+}
+.beta-copy p { color: var(--muted); }
+.bullet { margin: 10px 0 0 16px; color: var(--muted); }
+.bullet li { margin: 4px 0; }
+.beta-form label { display: grid; gap: 6px; margin-bottom: 10px; }
+.beta-form input, .beta-form textarea {
+  width: 100%; padding: .8rem; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--card-2); color: var(--text);
+}
+.beta-msg { margin-top: 6px; color: var(--muted); }
+
+
+.site-footer { border-top: 1px solid var(--line); padding: 18px 0; margin-top: 26px; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.footer-links { display: flex; gap: 14px; }
+.footer-links a { color: var(--muted); text-decoration: none; }
+.footer-links a:hover { color: var(--text); }
+
+
+@media (max-width: 900px) {
+  .compare { grid-template-columns: 1fr; }
+  .compare-item.arrow { display: none; }
+  .beta-card { grid-template-columns: 1fr; }
+}
+
+
+________________
+
+
+app.js
+// Theme toggle (persisted)
+(function initTheme() {
+  const root = document.documentElement;
+  const key = "hn-theme";
+  const btn = document.getElementById("themeToggle");
+  const saved = localStorage.getItem(key);
+  if (saved === "light" || saved === "dark") {
+    root.setAttribute("data-theme", saved);
+    if (btn) btn.textContent = saved === "dark" ? "🌙" : "☀️";
+  }
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(key, next);
+      btn.textContent = next === "dark" ? "🌙" : "☀️";
+    });
+  }
+})();
+
+
+// Live metrics
+async function loadStatus() {
+  try {
+    const r = await fetch("/status.json", { cache: "no-store" });
+    const s = await r.json();
+    set("#m-articles", fmt(s.articles_analyzed));
+    set("#m-signed", fmt(s.signed_reports));
+    set("#m-sources", fmt(s.sources_tracked));
+    set("#m-updated", new Date(s.updated_at).toLocaleString());
+  } catch {
+    // keep placeholders
+  }
+}
+setInterval(loadStatus, 12000);
+loadStatus();
+
+
+// Articles
+async function loadArticles() {
+  try {
+    const res = await fetch("/manifest.json", { cache: "no-store" });
+    const manifest = await res.json(); // { items:[{title,date,slug,bias,topic,source,path}] }
+    const wrap = qs("#articles");
+    wrap.innerHTML = "";
+    (manifest.items || []).forEach(item => {
+      const card = el("article", "card");
+      const h = el("h3"); h.textContent = item.title;
+      const meta = el("div", "meta");
+      meta.textContent = `${item.source} • ${new Date(item.date).toLocaleDateString()} • ${item.topic}`;
+      const tags = el("div", "tags");
+      const biasTag = el("span", `tag ${item.bias === "high" ? "bias-high" : ""}`);
+      biasTag.textContent = `bias: ${item.bias}`;
+      const sigTag = el("span", "tag"); sigTag.textContent = "signed";
+      tags.append(biasTag, sigTag);
+      const row = el("div");
+      const a = el("a", "btn btn-outline");
+      a.textContent = "Open analysis";
+      a.href = item.path; // direct link to JSON; your /verify.html can load this too
+      a.target = "_blank"; a.rel = "noopener";
+      row.appendChild(a);
+      card.append(h, meta, tags, row);
+      wrap.appendChild(card);
+    });
+  } catch (e) {
+    // If manifest missing, show friendly note
+    qs("#articles").innerHTML = `<div class="card"><h3>No analyses yet</h3><p class="meta">Add items to <code>/manifest.json</code> and place signed reports under <code>/articles/YYYY-MM-DD/slug.json</code>.</p></div>`;
+  }
+}
+loadArticles();
+
+
+// Try an example
+qs("#tryExample")?.addEventListener("click", async () => {
+  try {
+    const res = await fetch("/manifest.json", { cache: "no-store" });
+    const m = await res.json();
+    const first = (m.items || [])[0];
+    if (first?.path) window.location.href = first.path;
+  } catch {
+    // ignore
+  }
+});
+
+
+// Beta form (no backend yet — mailto fallback)
+qs("#betaForm")?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const name = fd.get("name"); const email = fd.get("email");
+  const role = fd.get("role") || ""; const usecase = fd.get("usecase") || "";
+  if (!name || !email) {
+    set("#betaMsg", "Please fill your name and email.");
+    return;
+  }
+  const subject = encodeURIComponent("Honest News — Beta Request");
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\nRole: ${role}\nUse case:\n${usecase}\n\n(Source: website)`
+  );
+  window.location.href = `mailto:hello@boonmind.io?subject=${subject}&body=${body}`;
+  set("#betaMsg", "Thanks! We opened your email client so you can send the request.");
+});
+
+
+// tiny helpers
+function qs(s){return document.querySelector(s)}
+function el(tag, cls){const n=document.createElement(tag); if(cls) n.className=cls; return n}
+function set(sel, val){const n=qs(sel); if(n) n.textContent = val}
+function fmt(n){ if(n==null) return "—"; if(n<1000) return String(n); if(n<1e6) return (n/1e3).toFixed(1)+"k"; return (n/1e6).toFixed(1)+"M"; }
+
+
+________________
+
+
+Notes
+* No backend needed: this reads your existing status.json + manifest.json and links directly to /articles/.../*.json (and your .sig lives alongside for the /verify.html page).
+
+* Theme toggle persists in localStorage and swaps CSS variables; default is dark.
+
+* Structure kept: hero text, softer claims, live metrics, comparison card, recent analyses grid, beta CTA — all aligned to your plan.
+
+* Brand: gradient is hard-coded to #00e5ff → #66ffa8; both themes are tuned for it.

@@ -1,0 +1,32 @@
+{
+  "title": "Moscow and Kyiv trade blame as pressure grows for civilian-target truce talks",
+  "url": "https://www.reuters.com/world/europe/kremlin-putin-willing-discuss-zelenskiys-call-halt-attacks-civilian-2025-04-22/",
+  "source": "Reuters",
+  "published_at": "2026-04-22T09:15:00Z",
+  "traits": [
+    {"trait": "empathy", "weight": 0.63},
+    {"trait": "logic", "weight": 0.21},
+    {"trait": "skepticism", "weight": 0.09},
+    {"trait": "shadow", "weight": 0.07}
+  ],
+  "phi_dna": {
+    "strand_a": 0.721,
+    "strand_b": 0.179,
+    "phi_link": 0.618,
+    "harmonic_freq": 1.449
+  },
+  "bias_score": 0.34,
+  "bias_vector": {"left": 0.23, "humanist": 0.11},
+  "emotion_score": 0.44,
+  "manipulation_score": 0.28,
+  "consensus": "Constructive / Balanced",
+  "counter_narrative": "Alternative framing emphasizes negotiation leverage and ceasefire conditions over battlefield developments.",
+  "signature": {
+    "algo": "ed25519",
+    "hex": "d1a9ef5f3b8c2e4a7f1d6b9c3e5a8f2b4d7c1a6e9f3b8d2c5a7f1e4b9c3d6a8"
+  },
+  "verified": true,
+  "timestamp": "2026-04-22T09:45:10Z",
+  "analysis_timestamp": "2026-04-22T09:45:10Z"
+}
+

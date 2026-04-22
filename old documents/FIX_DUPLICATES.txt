@@ -1,0 +1,22 @@
+# Fix by removing duplicate blocks only
+
+ssh root@45.130.164.130 << 'ENDSSH'
+# Remove ONLY the duplicate blocks (lines 14-22)
+sed -i '14,22d' /etc/nginx/sites-available/boonmind
+
+# Remove blocks AFTER the last server block (lines 147-165)
+sed -i '147,165d' /etc/nginx/sites-available/boonmind
+
+# Now test
+nginx -t
+if [ $? -eq 0 ]; then
+    systemctl reload nginx
+    echo "✅ SUCCESS!"
+    curl -sI http://localhost/honest-news/ | head -5
+else
+    echo "❌ Still broken, showing error:"
+    nginx -t 2>&1
+fi
+ENDSSH
+
+

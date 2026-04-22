@@ -1,0 +1,51 @@
+{
+  "title": "OpenAI Launches GPT-5 with Unprecedented Consciousness Simulation",
+  "url": "https://openai.com/gpt5",
+  "sources": [
+    {"name": "OpenAI", "url": "https://openai.com/gpt5"},
+    {"name": "Wired", "url": "https://wired.com/openai-gpt5"},
+    {"name": "MIT Tech Review", "url": "https://technologyreview.com/gpt5"}
+  ],
+  "published_at": "2025-10-28T20:30:00Z",
+  "traits": [
+    {"trait": "excited", "weight": 0.78},
+    {"trait": "cautious", "weight": 0.45},
+    {"trait": "skeptical", "weight": 0.68},
+    {"trait": "optimistic", "weight": 0.75}
+  ],
+  "phi_dna": {
+    "strand_a": 0.765,
+    "strand_b": 0.235,
+    "phi_link": 0.765,
+    "harmonic_freq": 1.530
+  },
+  "bias_score": 0.38,
+  "bias_vector": {"tech-positive": 0.75, "innovation-focused": 0.68},
+  "emotion_score": 0.61,
+  "manipulation_score": 0.28,
+  "consensus": "Cautiously Optimistic / Tech-Forward",
+  "counter_narratives": [
+    "Skeptics question whether 'consciousness simulation' is meaningfully different from advanced language modeling.",
+    "Ethicists raise concerns about anthropomorphizing AI capabilities.",
+    "Some sources emphasize hype vs. measurable improvements."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "excited", "weight": 0.078},
+      {"trait": "optimistic", "weight": 0.075},
+      {"trait": "skeptical", "weight": 0.068},
+      {"trait": "cautious", "weight": 0.045},
+      {"trait": "curious", "weight": 0.058}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "openai-gpt5.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T20:45:10Z"
+}
+

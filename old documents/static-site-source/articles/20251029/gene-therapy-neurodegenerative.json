@@ -1,0 +1,51 @@
+{
+  "title": "Gene Therapy Breakthrough for Neurodegenerative Diseases",
+  "url": "https://nature.com/gene-therapy-breakthrough",
+  "sources": [
+    {"name": "Nature", "url": "https://nature.com/gene-therapy-breakthrough"},
+    {"name": "New England Journal", "url": "https://nejm.org/gene-therapy"},
+    {"name": "BBC Health", "url": "https://bbc.com/health"}
+  ],
+  "published_at": "2025-10-28T12:15:00Z",
+  "traits": [
+    {"trait": "compassionate", "weight": 0.98},
+    {"trait": "hopeful", "weight": 0.95},
+    {"trait": "optimistic", "weight": 0.96},
+    {"trait": "cautious", "weight": 0.40}
+  ],
+  "phi_dna": {
+    "strand_a": 0.920,
+    "strand_b": 0.080,
+    "phi_link": 0.920,
+    "harmonic_freq": 1.840
+  },
+  "bias_score": 0.18,
+  "bias_vector": {"humanitarian": 0.98, "medical-progress-positive": 0.95},
+  "emotion_score": 0.87,
+  "manipulation_score": 0.12,
+  "consensus": "Compassionate / Hope-Driven",
+  "counter_narratives": [
+    "Ethical concerns about gene editing boundaries.",
+    "Cost and accessibility questions for global health equity.",
+    "Long-term safety data still limited in early trials."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "compassionate", "weight": 0.098},
+      {"trait": "optimistic", "weight": 0.096},
+      {"trait": "hopeful", "weight": 0.095},
+      {"trait": "curious", "weight": 0.045},
+      {"trait": "cautious", "weight": 0.040}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "gene-therapy-neurodegenerative.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T12:30:10Z"
+}
+

@@ -1,0 +1,51 @@
+{
+  "title": "NASA targets May cargo mission with SpaceX for ISS science and supplies",
+  "url": "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-34th-resupply-launch-to-space-station/",
+  "sources": [
+    {"name": "NASA", "url": "https://www.nasa.gov/news-release/nasa-invites-media-to-spacexs-34th-resupply-launch-to-space-station/"},
+    {"name": "NASA Blogs", "url": "https://blogs.nasa.gov/spacex/"},
+    {"name": "Starlust", "url": "https://starlust.org/space-xs-34th-resupply-mission-to-launch-to-international-space-station-soonheres-all-you-need-to-know/"}
+  ],
+  "published_at": "2026-04-22T05:45:00Z",
+  "traits": [
+    {"trait": "proud", "weight": 0.88},
+    {"trait": "excited", "weight": 0.85},
+    {"trait": "cautious", "weight": 0.30},
+    {"trait": "optimistic", "weight": 0.90}
+  ],
+  "phi_dna": {
+    "strand_a": 0.800,
+    "strand_b": 0.200,
+    "phi_link": 0.800,
+    "harmonic_freq": 1.600
+  },
+  "bias_score": 0.28,
+  "bias_vector": {"achievement-positive": 0.88, "innovation-focused": 0.80},
+  "emotion_score": 0.72,
+  "manipulation_score": 0.20,
+  "consensus": "Achievement-Celebrating / Innovation-Positive",
+  "counter_narratives": [
+    "Coverage differs on whether mission value is primarily scientific or operational.",
+    "Some reporting prioritizes launch cadence and logistics risks over payload details.",
+    "Others focus on long-horizon station science impact."
+  ],
+  "democratic_vote": {
+    "active_traits": 1000,
+    "top": [
+      {"trait": "optimistic", "weight": 0.090},
+      {"trait": "proud", "weight": 0.088},
+      {"trait": "excited", "weight": 0.085},
+      {"trait": "curious", "weight": 0.055},
+      {"trait": "cautious", "weight": 0.030}
+    ]
+  },
+  "signature": {
+    "algo": "ed25519",
+    "scheme": "detached",
+    "encoding": "base64",
+    "file": "spacex-quantum-satellite.sig"
+  },
+  "verified": false,
+  "timestamp": "2025-10-28T18:30:10Z"
+}
+

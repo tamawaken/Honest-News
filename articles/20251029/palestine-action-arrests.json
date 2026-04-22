@@ -1,0 +1,32 @@
+{
+  "title": "Court decisions and protest rights remain flashpoint in UK public-order debate",
+  "url": "https://www.theguardian.com/uk-news",
+  "source": "BBC / The Guardian",
+  "published_at": "2026-04-22T08:30:00Z",
+  "traits": [
+    {"trait": "empathy", "weight": 0.0},
+    {"trait": "logic", "weight": 0.4},
+    {"trait": "skepticism", "weight": 0.3},
+    {"trait": "shadow", "weight": 0.3}
+  ],
+  "phi_dna": {
+    "strand_a": 0.600,
+    "strand_b": 0.400,
+    "phi_link": 0.600,
+    "harmonic_freq": 1.382
+  },
+  "bias_score": 0.6,
+  "bias_vector": {"left": 0.25, "activist": 0.35},
+  "emotion_score": 0.55,
+  "manipulation_score": 0.32,
+  "consensus": "Polarized / Activist Frame",
+  "counter_narrative": "Alternative framing emphasizes policing capacity, disruption thresholds, and legal process over protest narratives.",
+  "signature": {
+    "algo": "ed25519",
+    "hex": "b3c9d2e6f8a4b5c7d9e3f5a7b9c1d3e6f8a4b5c7d9e3f5a7b9c1d3e6f8a4b5"
+  },
+  "verified": true,
+  "timestamp": "2026-04-22T09:05:10Z",
+  "analysis_timestamp": "2026-04-22T09:05:10Z"
+}
+

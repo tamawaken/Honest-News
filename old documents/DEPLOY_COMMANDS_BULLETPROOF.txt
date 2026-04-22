@@ -1,0 +1,56 @@
+# BULLETPROOF DEPLOYMENT COMMANDS
+# Copy and paste these ONE BY ONE
+
+# Navigate to folder
+cd ~/Documents/BOONQEC_ORGANIZED/"CarlOS Honest News/static-site"
+
+# STEP 1: Clean old files
+ssh root@45.130.164.130 << 'ENDSSH'
+cp /var/www/html/index.html /var/www/html/index.html.backup_$(date +%s) 2>/dev/null || true
+rm -f /var/www/html/honest-news/index.html 2>/dev/null || true
+rm -f /var/www/html/how-it-works.html 2>/dev/null || true
+rm -f /var/www/html/methodology.html 2>/dev/null || true
+rm -f /var/www/html/verify.html 2>/dev/null || true
+rm -f /var/www/html/app.js 2>/dev/null || true
+rm -f /var/www/html/style.css 2>/dev/null || true
+echo "✅ Old files cleaned"
+ENDSSH
+
+# STEP 2: Upload new file
+scp honest-news-v2-final.html root@45.130.164.130:/tmp/honest-news-v2-final.html
+
+# STEP 3: Deploy
+ssh root@45.130.164.130 << 'ENDSSH'
+mv /tmp/honest-news-v2-final.html /var/www/html/index.html
+chown www-data:www-data /var/www/html/index.html
+chmod 644 /var/www/html/index.html
+echo "✅ Deployed"
+ENDSSH
+
+# STEP 4: Verify
+ssh root@45.130.164.130 << 'ENDSSH'
+echo "HTTP response:"
+curl -sI http://localhost/ | head -3
+
+echo ""
+echo "File check:"
+ls -lh /var/www/html/index.html
+
+echo ""
+echo "Content check:"
+curl -s http://localhost/ | grep -i "honest news" | head -1
+ENDSSH
+
+# DONE!
+echo ""
+echo "✅ DEPLOYMENT COMPLETE"
+echo "🌐 http://45.130.164.130/"
+echo ""
+echo "Open in browser and verify:"
+echo "  1. Page loads (no 404)"
+echo "  2. 4 sample articles display"
+echo "  3. Theme toggle works"
+echo "  4. Category filters work"
+echo ""
+
+

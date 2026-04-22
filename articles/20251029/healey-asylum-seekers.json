@@ -1,0 +1,32 @@
+{
+  "title": "UK asylum housing debate returns as ministers review site options",
+  "url": "https://www.bbc.com/news",
+  "source": "BBC / Reuters",
+  "published_at": "2026-04-22T08:55:00Z",
+  "traits": [
+    {"trait": "empathy", "weight": 0.0},
+    {"trait": "logic", "weight": 0.5},
+    {"trait": "skepticism", "weight": 0.3},
+    {"trait": "shadow", "weight": 0.2}
+  ],
+  "phi_dna": {
+    "strand_a": 0.650,
+    "strand_b": 0.350,
+    "phi_link": 0.618,
+    "harmonic_freq": 1.414
+  },
+  "bias_score": 0.5,
+  "bias_vector": {"center": 0.5, "pragmatic": 0.3},
+  "emotion_score": 0.35,
+  "manipulation_score": 0.25,
+  "consensus": "Balanced / Pragmatic",
+  "counter_narrative": "Some sources emphasize fiscal and local-capacity impacts while others prioritize safeguarding and processing speed.",
+  "signature": {
+    "algo": "ed25519",
+    "hex": "a2b8c9d1e5f7a3b4c6d8e2f4a6b8c9d1e5f7a3b4c6d8e2f4a6b8c9d1e5f7a3"
+  },
+  "verified": true,
+  "timestamp": "2026-04-22T09:25:10Z",
+  "analysis_timestamp": "2026-04-22T09:25:10Z"
+}
+

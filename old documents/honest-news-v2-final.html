@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honest News — Democratic AI Analysis | Powered by BoonMind</title>
+  <meta name="description" content="See what all sides are saying — analyzed by democratic AI, verified by cryptography. Breaks echo chambers, detects emotional manipulation, and reveals counter-narratives.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+  <style>
+    /* CSS Variables */
+    :root {
+      --primary-color: #00ccff;
+      --secondary-color: #00ffaa;
+      --dark-bg: #0a0a0a;
+      --light-bg: #f5f5f5;
+      --text-color: #ffffff;
+      --dark-text-color: #0a0a0a;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --shadow-color: rgba(0, 0, 0, 0.3);
+      --ok: #23d18b;
+      --bad: #ff6b6b;
+    }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-color);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body[data-theme="light"] {
+      background: var(--light-bg);
+      color: var(--dark-text-color);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-bottom-left-radius: 50% 10%;
+      border-bottom-right-radius: 50% 10%;
+      box-shadow: 0 10px 20px var(--shadow-color);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .header p {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .header p b {
+      font-weight: 800;
+    }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    body[data-theme="light"] .header {
+      color: #0a0a0a;
+    }
+
+    body[data-theme="light"] .nav a {
+      color: #0a0a0a;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      border: none;
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    body[data-theme="light"] .theme-toggle {
+      background: rgba(0,0,0,0.1);
+      color: var(--dark-text-color);
+    }
+
+    /* Main */
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /* Category Filters */
+    .category-filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .category {
+      background: var(--glass-bg);
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .category:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .category.active {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-color: transparent;
+    }
+
+    body[data-theme="light"] .category {
+      background: rgba(0,0,0,0.05);
+      color: var(--dark-text-color);
+    }
+
+    body[data-theme="light"] .category:hover {
+      background: rgba(0,0,0,0.1);
+    }
+
+    body[data-theme="light"] .category.active {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+    }
+
+    /* News Grid */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    /* News Card */
+    .news-card {
+      background: var(--glass-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--card-border);
+      transition: all 0.3s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+    }
+
+    body[data-theme="light"] .news-card {
+      background: rgba(0,0,0,0.05);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    /* News Header */
+    .news-header {
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .news-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: white;
+      margin: 0 0 0.5rem 0;
+      line-height: 1.3;
+    }
+
+    .news-subtitle {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(0,0,0,0.2);
+      margin-top: 1rem;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(to right, #00ff88, #00ccff);
+      transition: width 1s ease-in-out;
+    }
+
+    /* News Content */
+    .news-content {
+      padding: 1.5rem;
+      color: var(--text-color);
+    }
+
+    body[data-theme="light"] .news-content {
+      color: var(--dark-text-color);
+    }
+
+    .content-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin: 0 0 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    body[data-theme="light"] .section-title {
+      color: var(--primary-color);
+    }
+
+    .content-text {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.9);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    body[data-theme="light"] .content-text {
+      color: rgba(0,0,0,0.8);
+    }
+
+    /* Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .metric {
+      background: rgba(0,204,255,0.1);
+      padding: 0.5rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .metric-value {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-color);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      background: rgba(0,204,255,0.2);
+      color: rgba(255,255,255,0.9);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 0.25rem 0.25rem 0 0;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    body[data-theme="light"] .badge {
+      background: rgba(0,204,255,0.1);
+      color: var(--dark-text-color);
+      border-color: var(--primary-color);
+    }
+
+    /* Actions */
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-color);
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-color: transparent;
+      color: white;
+    }
+
+    /* Thoughts Section */
+    .thoughts-section {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .thought-item {
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      opacity: 0.9;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .thought-item:last-child {
+      border-bottom: none;
+    }
+
+    .thought-item::before {
+      content: "💭";
+      margin-right: 0.5rem;
+    }
+
+    body[data-theme="light"] .thoughts-section {
+      border-top-color: rgba(0,0,0,0.1);
+    }
+
+    body[data-theme="light"] .thought-item {
+      border-bottom-color: rgba(0,0,0,0.05);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    body[data-theme="light"] .footer {
+      color: rgba(0,0,0,0.7);
+      border-top-color: rgba(0,0,0,0.1);
+    }
+
+    .footer-disclaimer {
+      max-width: 800px;
+      margin: 1rem auto 0;
+      font-size: 0.8rem;
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    /* Benefits */
+    .benefits {
+      text-align: center;
+      margin: 1.5rem auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .header p {
+        font-size: 1rem;
+      }
+
+      .nav {
+        gap: 0.5rem;
+      }
+
+      .nav a {
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
+      }
+
+      .category {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+
+      .main {
+        padding: 1rem;
+      }
+
+      .news-title {
+        font-size: 1.2rem;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header {
+        padding: 1.5rem 1rem;
+      }
+
+      .header h1 {
+        font-size: 1.5rem;
+      }
+
+      .nav a {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      .category {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .news-header,
+      .news-content {
+        padding: 1rem;
+      }
+
+      .news-title {
+        font-size: 1.1rem;
+      }
+
+      .theme-toggle {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <h1>Honest News</h1>
+      <p>See what <b>all sides</b> are saying — analyzed by democratic AI, verified by cryptography.</p>
+    </div>
+    <ul class="nav">
+      <li><a href="how-it-works.html">How It Works ⚙️</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="verify.html">Verify</a></li>
+    </ul>
+  </header>
+
+  <main class="main">
+    <!-- Category Filters -->
+    <div class="category-filters" id="category-filters">
+      <span class="category active" data-cat="all">All</span>
+      <span class="category" data-cat="tech">Tech</span>
+      <span class="category" data-cat="ai">AI</span>
+      <span class="category" data-cat="space">Space</span>
+      <span class="category" data-cat="crypto">Crypto</span>
+      <span class="category" data-cat="climate">Climate</span>
+      <span class="category" data-cat="health">Health</span>
+      <span class="category" data-cat="energy">Energy</span>
+      <span class="category" data-cat="politics">Politics</span>
+    </div>
+
+    <!-- Benefits Band -->
+    <section class="benefits" style="margin:1rem auto;text-align:center;max-width:1000px;">
+      <p style="font-size:1rem;color:var(--text-color);opacity:0.9;">
+        🧭 Breaks echo chambers • Detects emotional manipulation (see the bias) • Completely transparent — see how it thinks • Can't lie to you (cryptographically signed)
+      </p>
+    </section>
+
+    <!-- News Grid -->
+    <div class="news-grid" id="news-container" role="main" aria-live="polite">
+      <!-- News cards will be generated here -->
+    </div>
+
+    <!-- See It Work Section -->
+    <section style="margin:2rem 0;text-align:center;">
+      <h2 style="margin-bottom:1rem;color:var(--primary-color);">See It Work</h2>
+      <ol style="max-width:700px;margin:0 auto;color:var(--text-color);opacity:0.8;line-height:1.8;text-align:left;">
+        <li>Choose a controversial headline → watch multiple perspectives load.</li>
+        <li>See opposing views side by side and their emotional tone scores.</li>
+        <li>Counter-narratives are revealed automatically.</li>
+        <li>Emotional manipulation and bias levels displayed in real time.</li>
+        <li>Each analysis is cryptographically signed for verification.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Honest News. Democratic analysis powered by BoonMind.</p>
+    <p class="footer-disclaimer">
+      Source diversity is variable per topic — we sample outlets across the spectrum and label gaps.<br>
+      Results are cryptographically signed for transparency. Verify in your browser.
+    </p>
+  </footer>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️ Light</button>
+
+  <script>
+    /* Sample Articles - HARDCODED */
+    const SAMPLE_ARTICLES = [
+      {
+        title: "Zelensky condemns 'ruthless attack' after Russia hits main government building in Kyiv",
+        subtitle: "Multi-perspective analysis of Ukraine conflict reporting",
+        source: "BBC News",
+        date: "2025-10-29",
+        url: "#",
+        tags: ["politics", "world", "conflict"],
+        phi_dna: { phi_link: 0.618 },
+        manipulation_score: 0.28,
+        emotion_score: 0.44,
+        bias_score: 0.34,
+        democratic_vote: { active_traits: 1000 },
+        consensus: "Constructive / Balanced",
+        counter_narrative: "Alternate framing: Some sources emphasize economic impact over humanitarian crisis."
+      },
+      {
+        title: "Apple Unveils Quantum M5 Chip with Consciousness Integration",
+        subtitle: "Tech innovation across multiple outlets",
+        source: "Multi-source",
+        date: "2025-10-29",
+        url: "#",
+        tags: ["tech", "innovation"],
+        phi_dna: { phi_link: 0.866 },
+        manipulation_score: 0.22,
+        emotion_score: 0.58,
+        bias_score: 0.25,
+        democratic_vote: { active_traits: 1000 },
+        consensus: "Innovation-Positive / Low Bias",
+        counter_narrative: "Some sources question 'consciousness' terminology as marketing."
+      },
+      {
+        title: "Bitcoin Reaches $150,000 as Institutional Adoption Accelerates",
+        subtitle: "Crypto market coverage with environmental counter-narratives",
+        source: "Multi-source",
+        date: "2025-10-28",
+        url: "#",
+        tags: ["finance", "crypto"],
+        phi_dna: { phi_link: 0.770 },
+        manipulation_score: 0.35,
+        emotion_score: 0.68,
+        bias_score: 0.42,
+        democratic_vote: { active_traits: 1000 },
+        consensus: "Bullish / Market-Positive",
+        counter_narrative: "Environmental critics emphasize energy consumption concerns."
+      },
+      {
+        title: "Fusion Power Plant Achieves 24-Hour Net Energy Gain",
+        subtitle: "Climate solution with commercialization skepticism",
+        source: "Multi-source",
+        date: "2025-10-28",
+        url: "#",
+        tags: ["climate", "energy", "science"],
+        phi_dna: { phi_link: 0.850 },
+        manipulation_score: 0.18,
+        emotion_score: 0.75,
+        bias_score: 0.22,
+        democratic_vote: { active_traits: 1000 },
+        consensus: "Hope-Driven / Climate-Solution Focused",
+        counter_narrative: "Energy skeptics emphasize decades to commercialization."
+      }
+    ];
+
+    /* Metric Adapter */
+    function adaptMetrics(article) {
+      const sc = article.phi_dna 
+        ? Math.max(0, Math.min(100, article.phi_dna.phi_link * (1 - (article.manipulation_score || 0)) * 100))
+        : null;
+      const eii = article.emotion_score ? article.emotion_score * 100 : null;
+      const phiHB = article.phi_dna?.phi_link || null;
+      const active = article.democratic_vote?.active_traits || 1000;
+      const bias = article.bias_score || 0;
+      const ch = Math.max(0, Math.min(100, (active / 1000) * (1 - bias) * 100));
+      return { sc, eii, phiHB, ch, bias };
+    }
+
+    function generateThoughts(article) {
+      const thoughts = [];
+      if (article.consensus) thoughts.push(`Consensus: ${article.consensus}`);
+      if (article.counter_narrative) thoughts.push(article.counter_narrative);
+      const bias = article.bias_score || 0;
+      const level = bias < 0.3 ? 'Measured framing' : bias < 0.6 ? 'Some polarity detected' : 'High polarity detected';
+      thoughts.push(level);
+      if (article.verified !== false) thoughts.push('Cryptographically verified');
+      return thoughts.slice(0, 4);
+    }
+
+    function getBiasLabel(bias) {
+      if (bias < 0.3) return 'Low Bias';
+      if (bias < 0.6) return 'Medium Bias';
+      return 'High Bias';
+    }
+
+    /* Render */
+    function renderArticleCard(article) {
+      const m = adaptMetrics(article);
+      const thoughts = generateThoughts(article);
+      const tags = (article.tags || []).map(t => `<span class="badge">${t}</span>`).join('');
+      
+      const fmtMetric = (value) => {
+        if (value == null) return '—';
+        if (typeof value === 'number') return value < 1 ? value.toFixed(3) : Math.round(value);
+        return value;
+      };
+
+      return `
+      <div class="news-card">
+        <div class="news-header">
+          <h3 class="news-title">${escapeHtml(article.title)}</h3>
+          <p class="news-subtitle">${escapeHtml(article.subtitle || 'Multi-perspective analysis')}</p>
+          <div class="progress-bar">
+            <div class="bar-fill" style="width: ${m.sc || 50}%;"></div>
+          </div>
+        </div>
+        <div class="news-content">
+          <div class="content-section">
+            <h4 class="section-title">🌍 Source</h4>
+            <p class="content-text">${escapeHtml(article.source)} • ${article.date}</p>
+          </div>
+          <div class="content-section">
+            <h4 class="section-title">📊 Metrics</h4>
+            <div class="metrics-grid">
+              <div class="metric">
+                <div class="metric-label">Signal Coherence</div>
+                <div class="metric-value">${fmtMetric(m.sc)}%</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Emotional Intensity</div>
+                <div class="metric-value">${fmtMetric(m.eii)}%</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Harmonic Balance</div>
+                <div class="metric-value">${fmtMetric(m.phiHB)} φ</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Consensus Harmony</div>
+                <div class="metric-value">${fmtMetric(m.ch)}%</div>
+              </div>
+            </div>
+          </div>
+          <div class="content-section">
+            <h4 class="section-title">⚖️ Bias Assessment</h4>
+            <span class="badge">${getBiasLabel(m.bias * 100)}</span>
+            ${tags ? `<div style="margin-top:0.5rem;">${tags}</div>` : ''}
+          </div>
+          ${thoughts.length ? `
+          <div class="content-section thoughts-section">
+            <h4 class="section-title">🤖 Analysis Thoughts</h4>
+            ${thoughts.map(t => `<p class="thought-item">${escapeHtml(t)}</p>`).join('')}
+          </div>
+          ` : ''}
+        </div>
+      </div>`;
+    }
+
+    function escapeHtml(s = '') {
+      return s.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+    }
+
+    function renderArticles() {
+      const grid = document.getElementById('news-container');
+      if (!grid) return;
+      
+      const cat = readHashCat();
+      const filtered = SAMPLE_ARTICLES.filter(a => {
+        if (cat === 'all') return true;
+        const tags = (a.tags || []).map(t => String(t).toLowerCase());
+        return tags.includes(cat);
+      });
+      
+      grid.innerHTML = filtered.length 
+        ? filtered.map(renderArticleCard).join('') 
+        : `<div class="news-card"><div class="news-content"><h3>No articles</h3><p class="content-text">Try another category.</p></div></div>`;
+    }
+
+    /* Category Filter */
+    function readHashCat() {
+      const params = new URLSearchParams(window.location.hash.slice(1));
+      return params.get('cat') || 'all';
+    }
+
+    function setHashCat(cat) {
+      const params = new URLSearchParams(window.location.hash.slice(1));
+      params.set('cat', cat);
+      window.location.hash = params.toString();
+    }
+
+    const categoryButtons = document.querySelectorAll('.category');
+    if (categoryButtons.length) {
+      categoryButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const cat = e.target.dataset.cat;
+          if (!cat) return;
+          categoryButtons.forEach(b => b.classList.toggle('active', b === e.target));
+          setHashCat(cat);
+          renderArticles();
+        });
+      });
+    }
+
+    window.addEventListener('hashchange', () => {
+      const cat = readHashCat();
+      categoryButtons.forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+      renderArticles();
+    });
+
+    /* Theme Toggle */
+    (function initTheme() {
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      const key = 'hn-theme';
+      
+      const sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const saved = localStorage.getItem(key);
+      const initial = saved || sys;
+      
+      root.setAttribute('data-theme', initial);
+      if (btn) {
+        btn.textContent = initial === 'dark' ? '☀️ Light' : '🌙 Dark';
+      }
+      
+      if (btn) {
+        btn.addEventListener('click', () => {
+          const current = root.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          localStorage.setItem(key, next);
+          btn.textContent = next === 'dark' ? '☀️ Light' : '🌙 Dark';
+        });
+      }
+    })();
+
+    /* Boot */
+    window.addEventListener('DOMContentLoaded', () => {
+      renderArticles();
+    });
+  </script>
+</body>
+</html>
+
+

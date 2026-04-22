@@ -1,0 +1,45 @@
+# SOLUTION 1: Use ROOT instead of ALIAS (your consultant's suggestion - should work!)
+# This works because the server already has root /var/www/html at the top
+# With root, /honest-news maps to /var/www/html/honest-news
+
+ssh root@45.130.164.130 << 'ENDSSH'
+# Remove all existing honest-news blocks
+sed -i '/location \/honest-news/,/^[[:space:]]*}/d' /etc/nginx/sites-available/default
+sed -i '/# Honest News/,/^[[:space:]]*}/d' /etc/nginx/sites-available/default
+
+# Add location block INSIDE server block (after /cloud-cpu/)
+sed -i '/location \/cloud-cpu\/ {/,/^    }/{
+    /^    }/a\
+\
+    # Honest News static site\
+    location /honest-news {\
+        root /var/www/html;\
+        index index.html;\
+        try_files $uri $uri/ /honest-news/index.html;\
+    }
+}' /etc/nginx/sites-available/default
+
+nginx -t && systemctl reload nginx && echo "✅ Fixed with ROOT approach!"
+ENDSSH
+
+# Test it:
+ssh root@45.130.164.130 "curl -I http://localhost/honest-news/ 2>&1 | head -3"
+
+# ============================================
+# SOLUTION 2: Keep ALIAS but fix it properly
+# ============================================
+# ssh root@45.130.164.130 << 'ENDSSH'
+# sed -i '/location \/honest-news/,/^[[:space:]]*}/d' /etc/nginx/sites-available/default
+# sed -i '/location \/cloud-cpu\/ {/,/^    }/{
+#     /^    }/a\
+# \
+#     # Honest News static site\
+#     location /honest-news/ {\
+#         alias /var/www/html/honest-news/;\
+#         index index.html;\
+#         try_files $uri $uri/ =404;\
+#     }
+# }' /etc/nginx/sites-available/default
+# nginx -t && systemctl reload nginx && echo "✅ Fixed with ALIAS approach!"
+# ENDSSH
+

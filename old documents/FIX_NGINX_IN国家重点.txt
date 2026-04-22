@@ -1,0 +1,22 @@
+# Copy-paste this SINGLE command to fix it properly:
+
+ssh root@45.130.164.130 << 'ENDSSH'
+# Remove all location /honest-news blocks (they're outside server block)
+sed -i '/# Honest News static site/,/^}$/d' /etc/nginx/sites-available/default
+sed -i '/location \/honest-news/,/^}$/d' /etc/nginx/sites-available/default
+
+# Now add it INSIDE the server block (before the closing brace)
+sed -i '/location \/cloud-cpu\/ {/,/^    }/{
+    /^    }/a\
+\
+    # Honest News static site\
+    location /honest-news {\
+        alias /var/www/html/honest-news;\
+        index index.html;\
+        try_files $uri $uri/ /honest-news/index.html;\
+    }
+}' /etc/nginx/sites-available/default
+
+nginx -t && systemctl reload nginx && echo "✅ Fixed! Location block now INSIDE server block"
+ENDSSH
+

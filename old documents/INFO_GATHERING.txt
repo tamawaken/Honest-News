@@ -1,0 +1,79 @@
+# INFO GATHERING EXERCISE - NO FIXES, JUST INFORMATION
+# Run these commands and paste all outputs back
+
+# ============================================
+# 1. SERVER FILE STRUCTURE
+# ============================================
+
+# Check what's in /var/www/html:
+ssh root@45.130.164.130 "ls -lah /var/www/html/ | head -30"
+
+# Check if honest-news folder exists:
+ssh root@45.130.164.130 "ls -lah /var/www/html/honest-news/"
+
+# Check what HTML/CSS/JS files exist at root:
+ssh root@45.130.164.130 "find /var/www/html -maxdepth 1 -type f \( -name '*.html' -o -name '*.css' -o -name '*.js' \)"
+
+# ============================================
+# 2. NGINX CONFIGURATION
+# ============================================
+
+# Check the actual active nginx config:
+ssh root@45.130.164.130 "nginx -T 2>&1 | grep -B 5 -A 15 'location /honest-news'"
+
+# Check if sites-enabled has symlinks:
+ssh root@45.130.164.130 "ls -la /etc/nginx/sites-enabled/"
+
+# Check sites-available:
+ssh root@45.130.164.130 "ls -la /etc/nginx/sites-available/"
+
+# Show the full server block from sites-available/default:
+ssh root@45.130.164.130 "grep -A 100 '^server {' /etc/nginx/sites-available/default | head -80"
+
+# ============================================
+# 3. SERVICES RUNNING
+# ============================================
+
+# Check what's listening on port 80:
+ssh root@45.130.164.130 "lsof -i :80"
+
+# Check nginx status:
+ssh root@45.130.164.130 "systemctl status nginx"
+
+# Check all boonmind-related services:
+ssh root@45.130.164.130 "systemctl list-units --type=service --all | grep -i boon"
+
+# ============================================
+# 4. PERMISSIONS
+# ============================================
+
+# Check honest-news folder permissions:
+ssh root@45.130.164.130 "stat /var/www/html/honest-news/"
+
+# Check nginx user:
+ssh root@45.130.164.130 "ps aux | grep nginx | grep -v grep"
+
+# ============================================
+# 5. ERROR LOGS
+# ============================================
+
+# Recent nginx errors:
+ssh root@45.130.164.130 "tail -20 /var/log/nginx/error.log"
+
+# ============================================
+# 6. TEST ACCESS
+# ============================================
+
+# Test root URL:
+ssh root@45.130.164.130 "curl -I http://localhost/ 2>&1 | head -5"
+
+# Test honest-news URL:
+ssh root@45.130.164.130 "curl -I http://localhost/honest-news/ 2>&1 | head -5"
+
+# ============================================
+# 7. LOCAL DEV STRUCTURE
+# ============================================
+# (User provides this info)
+
+# After gathering all info, I'll create a comprehensive report.
+

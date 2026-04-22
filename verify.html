@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Signatures • Honest News</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0a0a0a">
+  <script src="https://cdn.jsdelivr.net/npm/tweetnacl@1.0.3/nacl.min.js"></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="header">
+    <div class="header-content">
+      <h1>Verify Signatures</h1>
+      <p>Verify analysis file integrity in your browser</p>
+    </div>
+    <ul class="nav">
+      <li><a href="index.html">← Back to Home</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </header>
+
+  <main class="main" id="main-content">
+    <section class="verify-section">
+      <div class="news-card" style="max-width:900px;margin:0 auto;">
+        <div class="news-content">
+          <h2 style="color:var(--primary-color);margin-top:0;">How Verification Works</h2>
+          <p class="content-text">Every analysis is signed with Ed25519 cryptography. Use this tool to verify that results haven't been tampered with.</p>
+          <div class="site-meta" style="margin-top:1rem;">
+            <strong>Readiness note:</strong> Verification requires `keys/public_key.b64` and matching `*.sig` files for each article.
+          </div>
+
+          <div style="margin:2rem 0;">
+            <label style="display:block;margin-bottom:1rem;">
+              <div style="color:var(--primary-color);font-weight:600;margin-bottom:0.5rem;">Article JSON URL:</div>
+              <input type="text" id="jsonUrl" placeholder="/articles/20251029/example-story.json" value="/articles/20251029/example-story.json" style="width:100%;padding:0.75rem;border-radius:8px;border:1px solid var(--card-border);background:var(--glass-bg);color:var(--text-color);font-size:0.9rem;">
+            </label>
+            <label style="display:block;margin-bottom:1rem;">
+              <div style="color:var(--primary-color);font-weight:600;margin-bottom:0.5rem;">Signature File URL:</div>
+              <input type="text" id="sigUrl" placeholder="/articles/20251029/example-story.sig" value="/articles/20251029/example-story.sig" style="width:100%;padding:0.75rem;border-radius:8px;border:1px solid var(--card-border);background:var(--glass-bg);color:var(--text-color);font-size:0.9rem;">
+            </label>
+            <label style="display:block;margin-bottom:1rem;">
+              <div style="color:var(--primary-color);font-weight:600;margin-bottom:0.5rem;">Public Key URL:</div>
+              <input type="text" id="keyUrl" placeholder="/keys/public_key.b64" value="/keys/public_key.b64" style="width:100%;padding:0.75rem;border-radius:8px;border:1px solid var(--card-border);background:var(--glass-bg);color:var(--text-color);font-size:0.9rem;">
+            </label>
+            <button onclick="verifySignature()" class="btn btn-primary" style="width:100%;">Verify Signature</button>
+          </div>
+
+          <div id="verifyResult" style="display:none;padding:1rem;border-radius:8px;margin:1rem 0;"></div>
+
+          <div style="background:rgba(0,204,255,0.1);padding:1.5rem;border-radius:12px;margin-top:2rem;">
+            <h4 style="color:var(--primary-color);margin-top:0;">What This Proves</h4>
+            <ul style="line-height:1.8;">
+              <li>✅ The analysis file matches the signature (no tampering)</li>
+              <li>✅ The signature was created by this platform's private key</li>
+              <li>✅ The results are authentic and unmodified</li>
+            </ul>
+            <p class="content-text" style="margin-top:1rem;"><strong>Note:</strong> This doesn't prove the analysis is "correct" — it proves the file you're viewing is what we generated and signed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Honest News. Independent multi-source analysis.</p>
+    <nav class="footer-links" aria-label="Trust and policy links">
+      <a href="about.html">About</a>
+      <a href="editorial-policy.html">Editorial Policy</a>
+      <a href="corrections.html">Corrections</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="verify.html">Verification</a>
+      <a href="publish-checklist.html">Publish Checklist</a>
+    </nav>
+  </footer>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️ Light</button>
+
+  <script>
+    const BASE = new URL('.', window.location.href);
+    const urlOf = (p) => new URL(p, BASE).toString();
+
+    async function verifySignature() {
+      const jsonUrl = document.getElementById('jsonUrl').value;
+      const sigUrl = document.getElementById('sigUrl').value;
+      const keyUrl = document.getElementById('keyUrl').value;
+      const resultDiv = document.getElementById('verifyResult');
+
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = '<p style="color:var(--text-color);">Verifying...</p>';
+
+      try {
+        const [jsonResponse, sigResponse, keyResponse] = await Promise.all([
+          fetchArrayBufferOrThrow(urlOf(jsonUrl), 'article JSON'),
+          fetchTextOrThrow(urlOf(sigUrl), 'signature file').then(t => Uint8Array.from(atob(t), c => c.charCodeAt(0))),
+          fetchTextOrThrow(urlOf(keyUrl), 'public key').then(t => {
+            const keyData = t.trim().replace(/\s+/g, '');
+            return Uint8Array.from(atob(keyData), c => c.charCodeAt(0));
+          })
+        ]);
+
+        const jsonBytes = new Uint8Array(jsonResponse);
+        const sigBytes = new Uint8Array(sigResponse);
+        const pubKeyBytes = new Uint8Array(keyResponse);
+
+        const isValid = nacl.sign.detached.verify(jsonBytes, sigBytes, pubKeyBytes);
+
+        if (isValid) {
+          resultDiv.innerHTML = '<div style="background:rgba(35,209,139,0.2);padding:1rem;border-radius:8px;border:1px solid var(--ok);color:var(--ok);">✅ <strong>Signature Verified</strong><br>The analysis is authentic and unmodified.</div>';
+        } else {
+          resultDiv.innerHTML = '<div style="background:rgba(255,107,107,0.2);padding:1rem;border-radius:8px;border:1px solid var(--bad);color:var(--bad);">❌ <strong>Verification Failed</strong><br>The signature does not match. This file may have been tampered with.</div>';
+        }
+      } catch (error) {
+        resultDiv.innerHTML = `<div style="background:rgba(255,204,102,0.2);padding:1rem;border-radius:8px;border:1px solid #ffcc66;color:#ffcc66;">⚠️ <strong>Error:</strong> ${error.message}<br>Make sure the URLs are correct and required key/signature files exist.</div>`;
+      }
+    }
+
+    async function fetchTextOrThrow(url, label) {
+      const res = await fetch(url, { cache: 'no-cache' });
+      if (!res.ok) {
+        throw new Error(`Missing or unreadable ${label} (${res.status})`);
+      }
+      return res.text();
+    }
+
+    async function fetchArrayBufferOrThrow(url, label) {
+      const res = await fetch(url, { cache: 'no-cache' });
+      if (!res.ok) {
+        throw new Error(`Missing or unreadable ${label} (${res.status})`);
+      }
+      return res.arrayBuffer();
+    }
+
+    // Auto-verify on page load if URLs are present
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('json') && params.has('sig')) {
+        document.getElementById('jsonUrl').value = params.get('json');
+        document.getElementById('sigUrl').value = params.get('sig');
+        verifySignature();
+      }
+    });
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
