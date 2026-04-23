@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,16 +27,23 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
   <header class="header" role="banner">
-    <div class="header-content">
-      <h1>Honest News</h1>
-      <p>See what <b>different sources</b> are saying — compared with clear, practical analysis.</p>
+    <div class="top-strip">
+      <span id="today-label">Thursday, April 23, 2026</span>
+      <span>•</span>
+      <span class="strip-live">LIVE FEED</span>
+      <span>INDEPENDENT · OPEN METHODOLOGY</span>
+    </div>
+    <div class="masthead">
+      <div class="masthead-left" aria-hidden="true"></div>
+      <h1>Honest.News</h1>
+      <div class="masthead-right">SOURCE VERIFIED</div>
     </div>
     <ul class="nav" aria-label="Primary">
-      <li><a href="#home">Live Feed</a></li>
-      <li><a href="how-it-works.html">How It Works ⚙️</a></li>
-      <li><a href="methodology.html">Methodology</a></li>
-      <li><a href="verify.html">Verify</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="#home">LIVE FEED</a></li>
+      <li><a href="how-it-works.html">HOW IT WORKS</a></li>
+      <li><a href="methodology.html">METHODOLOGY</a></li>
+      <li><a href="verify.html">VERIFY</a></li>
+      <li><a href="about.html">ABOUT</a></li>
     </ul>
   </header>
 
@@ -96,6 +103,39 @@
       <a href="publish-checklist.html">Publish Checklist</a>
     </nav>
   </footer>
+
+  <div class="modal-overlay" id="article-modal" hidden>
+    <div class="modal-shell">
+      <button class="modal-close" id="article-modal-close" aria-label="Close article view">×</button>
+      <div class="modal-body">
+        <div class="modal-tag" id="article-modal-tag">TECH</div>
+        <h2 class="modal-title" id="article-modal-title">Article Title</h2>
+        <p class="modal-meta" id="article-modal-meta">source • date</p>
+        <div class="modal-content" id="article-modal-content"></div>
+        <div class="modal-actions">
+          <button class="btn btn-primary" id="article-analysis-link">View Full Analysis</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="analysis-modal" hidden>
+    <div class="modal-shell analysis-shell">
+      <button class="modal-close" id="analysis-modal-close" aria-label="Close analysis view">×</button>
+      <div class="modal-body">
+        <h2 class="modal-title" id="analysis-modal-title">Article Analysis</h2>
+        <div class="analysis-stats" id="analysis-stats"></div>
+        <div class="analysis-bar-wrap">
+          <h4>COVERAGE BIAS SPECTRUM</h4>
+          <div class="analysis-bar">
+            <div class="analysis-marker" id="analysis-marker"></div>
+          </div>
+          <div class="analysis-bar-labels"><span>LEFT</span><span>CENTER</span><span>RIGHT</span></div>
+        </div>
+        <div class="source-compare" id="source-compare"></div>
+      </div>
+    </div>
+  </div>
 
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️ Light</button>
 
