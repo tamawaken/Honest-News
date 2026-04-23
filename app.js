@@ -314,19 +314,24 @@ function initCategoryFilters() {
 
 function initTheme() {
   const root = document.documentElement;
+  const body = document.body;
   const btn = $('#themeToggle');
   const key = 'hn-theme';
   const saved = localStorage.getItem(key);
-  const initial = saved || 'light';
-  root.setAttribute('data-theme', initial);
-  if (btn) btn.textContent = initial === 'dark' ? '☀️ Light' : '🌙 Dark';
+  // Light is the strict default. Dark is only applied when explicitly chosen.
+  const initial = saved === 'dark' ? 'dark' : 'light';
+  const applyTheme = (theme) => {
+    root.setAttribute('data-theme', theme);
+    if (body) body.setAttribute('data-theme', theme);
+    if (btn) btn.textContent = theme === 'dark' ? '☀ Light' : '🌙 Dark';
+  };
+  applyTheme(initial);
   if (btn) {
     btn.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme');
+      const current = root.getAttribute('data-theme') || 'light';
       const next = current === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
       localStorage.setItem(key, next);
-      btn.textContent = next === 'dark' ? '☀️ Light' : '🌙 Dark';
+      applyTheme(next);
     });
   }
 }

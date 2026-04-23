@@ -6,11 +6,14 @@
   <title>Honest News — Multi-Source News Analysis</title>
   <meta name="description" content="Honest News shows coverage from multiple perspectives, highlights framing differences, and provides transparent article-level analysis with verification tools.">
   <meta name="keywords" content="news analysis, media bias, source comparison, article verification, transparency">
-  <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#0a0a0a">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#faf9f5">
   <meta property="og:title" content="Honest News — Multi-Source News Analysis">
   <meta property="og:description" content="Transparent, practical news analysis with source and framing comparison.">
   <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
     {
@@ -26,34 +29,33 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
+
   <header class="header" role="banner">
     <div class="top-strip">
       <span id="today-label">Thursday, April 23, 2026</span>
       <span>•</span>
       <span class="strip-live">LIVE FEED</span>
+      <span>•</span>
       <span>INDEPENDENT · OPEN METHODOLOGY</span>
     </div>
+
     <div class="masthead">
-      <div class="masthead-left" aria-hidden="true"></div>
+      <div class="masthead-left">
+        <ul class="nav" aria-label="Primary">
+          <li><a href="#home" class="active" aria-current="page">LIVE FEED</a></li>
+          <li><a href="how-it-works.html">HOW IT WORKS</a></li>
+          <li><a href="methodology.html">METHODOLOGY</a></li>
+          <li><a href="verify.html">VERIFY</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+        </ul>
+      </div>
       <h1>Honest.News</h1>
       <div class="masthead-right">SOURCE VERIFIED</div>
     </div>
-    <ul class="nav" aria-label="Primary">
-      <li><a href="#home">LIVE FEED</a></li>
-      <li><a href="how-it-works.html">HOW IT WORKS</a></li>
-      <li><a href="methodology.html">METHODOLOGY</a></li>
-      <li><a href="verify.html">VERIFY</a></li>
-      <li><a href="about.html">ABOUT</a></li>
-    </ul>
   </header>
 
   <main class="main" id="main-content">
     <div id="home" aria-hidden="true"></div>
-    <section class="site-meta" aria-live="polite">
-      <strong>Transparency:</strong>
-      <span id="status-meta">Loading publication status...</span>
-      <span> | LIVE badge = external feed; no badge = local fallback</span>
-    </section>
 
     <div class="category-filters" id="category-filters" role="toolbar" aria-label="Filter by topic">
       <button class="category active" data-cat="all" type="button">All</button>
@@ -67,29 +69,21 @@
       <button class="category" data-cat="politics" type="button">Politics</button>
     </div>
 
-    <section class="benefits" style="margin:1rem auto;text-align:center;max-width:1000px;">
-      <p style="font-size:1rem;color:var(--text-color);opacity:0.9;">
-        🧭 Compare perspectives • Spot loaded framing • Review method notes • Verify file integrity when signatures are available
-      </p>
+    <section class="site-meta" aria-live="polite">
+      <strong>Transparency:</strong>
+      <span id="status-meta">Loading publication status...</span>
+      <span> | LIVE badge = external feed; no badge = local fallback</span>
     </section>
 
-    <div class="news-grid" id="news-container" aria-live="polite">
-    </div>
-
-    <section style="margin:2rem 0;text-align:center;">
-      <h2 style="margin-bottom:1rem;color:var(--primary-color);">See It Work</h2>
-      <ol style="max-width:700px;margin:0 auto;color:var(--text-color);opacity:0.8;line-height:1.8;text-align:left;">
-        <li>Choose a controversial headline → watch multiple perspectives load.</li>
-        <li>See opposing views side by side and their emotional tone scores.</li>
-        <li>Counter-narratives are revealed automatically.</li>
-        <li>Emotional manipulation and bias levels displayed in real time.</li>
-        <li>Each analysis is cryptographically signed for verification.</li>
-      </ol>
+    <section class="benefits" aria-label="What this demo shows">
+      <p>Compare perspectives · Spot loaded framing · Review method notes · Verify file integrity when signatures are available</p>
     </section>
+
+    <div class="news-grid" id="news-container" aria-live="polite"></div>
   </main>
 
   <footer class="footer" role="contentinfo">
-    <p>© 2025 Honest News. Independent multi-source analysis.</p>
+    <p>© 2026 Honest News. Independent multi-source analysis.</p>
     <p class="footer-disclaimer">
       Source diversity is variable per topic — we sample outlets across the spectrum and label gaps.<br>
       Where signatures are provided, you can verify file integrity in your browser.
@@ -126,18 +120,18 @@
         <h2 class="modal-title" id="analysis-modal-title">Article Analysis</h2>
         <div class="analysis-stats" id="analysis-stats"></div>
         <div class="analysis-bar-wrap">
-          <h4>COVERAGE BIAS SPECTRUM</h4>
+          <h4>Coverage Bias Spectrum</h4>
           <div class="analysis-bar">
             <div class="analysis-marker" id="analysis-marker"></div>
           </div>
-          <div class="analysis-bar-labels"><span>LEFT</span><span>CENTER</span><span>RIGHT</span></div>
+          <div class="analysis-bar-labels"><span>Left</span><span>Center</span><span>Right</span></div>
         </div>
         <div class="source-compare" id="source-compare"></div>
       </div>
     </div>
   </div>
 
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️ Light</button>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" type="button">🌙 Dark</button>
 
   <script src="https://cdn.jsdelivr.net/npm/tweetnacl@1.0.3/nacl.min.js"></script>
   <script src="app.js"></script>
