@@ -526,11 +526,26 @@ input:focus-visible,
 .btn:hover { background: var(--chip-bg); border-color: #bfb9ac; text-decoration: none; }
 
 .btn-primary {
-  background: var(--ink);
-  color: #fff;
-  border-color: var(--ink);
+  background: transparent;
+  color: #111111;
+  border: 1px solid #111111;
 }
-.btn-primary:hover { background: #000; border-color: #000; color: #fff; }
+.btn-primary:hover {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+[data-theme="dark"] .btn-primary {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+[data-theme="dark"] .btn-primary:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
 
 /* =========================================================
    FOOTER
