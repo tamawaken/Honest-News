@@ -7,7 +7,8 @@ const $$ = (sel, root = document) => root.querySelectorAll(sel);
 /* =========================================================
    ARTICLES — hardcoded Phase 1 content
    Slugs match existing articles/20251029/ files for continuity.
-   Images: Unsplash (https://source.unsplash.com/800x500/?keyword).
+   Images: Unsplash CDN (https://images.unsplash.com/photo-<id>).
+   All URLs verified 200 before commit.
    ========================================================= */
 
 const ARTICLES = [
@@ -18,7 +19,7 @@ const ARTICLES = [
     source: 'Reuters / RTE',
     sourceLabel: 'Reuters',
     date: '2026-04-22',
-    image: 'https://source.unsplash.com/800x500/?office,workplace',
+    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop',
     summary: 'Meta confirmed an expansion of internal workflow logging used to improve product models, reigniting debate over employee privacy and consent in large-scale AI development.',
     fullArticle: [
       'Meta has confirmed it will expand the internal logging of employee workflow activity to improve the training data used for its consumer and enterprise AI products. The company told staff the change applies only to corporate devices and existing Meta-owned tooling, and that external user data is not part of the new data set.',
@@ -41,7 +42,7 @@ const ARTICLES = [
     source: 'Reuters / Bloomberg',
     sourceLabel: 'Reuters',
     date: '2026-04-22',
-    image: 'https://source.unsplash.com/800x500/?semiconductor,chip',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop',
     summary: 'The U.S. Commerce Department tightened controls on advanced AI accelerator exports to several jurisdictions. Nvidia and peers warned of short-term compliance costs but said core demand remains intact.',
     fullArticle: [
       'The U.S. Department of Commerce published updated export controls on advanced AI accelerators on Tuesday, narrowing the performance thresholds above which shipments require a licence and adding three jurisdictions to the enhanced-review list. The final rule largely mirrors an interim version circulated in February.',
@@ -64,7 +65,7 @@ const ARTICLES = [
     source: 'UN News / Reuters',
     sourceLabel: 'UN News',
     date: '2026-04-22',
-    image: 'https://source.unsplash.com/800x500/?government,diplomacy',
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop',
     summary: 'A working group at the UN tabled a draft framework for cross-border AI governance this week. Member states disagree on enforcement, while industry groups push for lighter compliance burdens.',
     fullArticle: [
       'A UN working group tasked with drafting a cross-border framework for the governance of advanced AI systems presented its first consolidated text to member states on Tuesday. The 48-page draft sets out voluntary principles on transparency, risk assessment, and post-deployment monitoring, with optional annexes covering export controls and independent auditing.',
@@ -87,7 +88,7 @@ const ARTICLES = [
     source: 'VentureBeat / Reuters',
     sourceLabel: 'VentureBeat',
     date: '2026-04-21',
-    image: 'https://source.unsplash.com/800x500/?artificial-intelligence,technology',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop',
     summary: 'Three major AI labs shipped new enterprise-tier systems within a week of each other, narrowing the performance gap on standard benchmarks and shifting attention to deployment reliability.',
     fullArticle: [
       'Three of the largest AI labs released new enterprise-grade models in the span of seven days, marking the most concentrated competitive window since the wave of foundation model launches in late 2024. The releases arrive with similar headline claims on reasoning and code generation, and noticeably smaller performance gaps than in previous cycles.',
@@ -110,7 +111,7 @@ const ARTICLES = [
     source: 'NASA',
     sourceLabel: 'NASA',
     date: '2026-04-21',
-    image: 'https://source.unsplash.com/800x500/?space,rocket',
+    image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&auto=format&fit=crop',
     summary: 'NASA and SpaceX are targeting a May launch for the next ISS cargo resupply mission, carrying science payloads on materials research, plant biology, and life-support hardware.',
     fullArticle: [
       'NASA and SpaceX are targeting a mid-May launch window for the next cargo resupply mission to the International Space Station. The CRS-32 Dragon will carry approximately 2,800 kilograms of crew supplies, science payloads and station hardware, launching from Space Launch Complex 39A at Kennedy Space Center.',
@@ -133,7 +134,7 @@ const ARTICLES = [
     source: 'CoinDesk',
     sourceLabel: 'CoinDesk',
     date: '2026-04-21',
-    image: 'https://source.unsplash.com/800x500/?bitcoin,crypto',
+    image: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&auto=format&fit=crop',
     summary: 'Bitcoin traded in a tight range near $78,000 as U.S. spot volume and ETF flows picked up. Analysts point to supply tightening on exchanges but caution against reading a single week as a trend.',
     fullArticle: [
       'Bitcoin held in a narrow range near $78,000 through the week, with intraday volatility falling to its lowest level in more than a month. On-chain analysts noted a steady drawdown of balances on major U.S. exchanges, a pattern that has historically coincided with stronger spot demand but is not on its own a reliable directional signal.',
@@ -156,7 +157,7 @@ const ARTICLES = [
     source: 'Eco-Business',
     sourceLabel: 'Eco-Business',
     date: '2026-04-20',
-    image: 'https://source.unsplash.com/800x500/?factory,emissions',
+    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&auto=format&fit=crop',
     summary: 'Malaysia rolled out a domestic carbon market framework this week, but pushed back its planned carbon tax by at least two years, citing industrial competitiveness and transition support.',
     fullArticle: [
       'Malaysia formally launched its domestic voluntary carbon market framework on Tuesday, allowing verified emissions reductions to be traded between Malaysian companies and, in a later phase, cross-listed on regional exchanges. The framework sits alongside an expanded disclosure regime for large emitters and a revised forestry baseline methodology.',
@@ -179,7 +180,7 @@ const ARTICLES = [
     source: 'Ember / AP',
     sourceLabel: 'Ember',
     date: '2026-04-20',
-    image: 'https://source.unsplash.com/800x500/?solar,renewable',
+    image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&auto=format&fit=crop',
     summary: 'A new Ember report finds that clean sources supplied all of the rise in global electricity demand in 2025, with solar the largest single contributor. Fossil generation was roughly flat.',
     fullArticle: [
       'Clean electricity sources supplied all of the growth in global power demand in 2025, according to a new report from independent energy think-tank Ember. Solar generation was the single largest contributor, followed by wind and hydro, while fossil-fuel generation was roughly flat year-on-year.',
@@ -202,7 +203,7 @@ const ARTICLES = [
     source: 'NIH / NIDA',
     sourceLabel: 'NIH',
     date: '2026-04-19',
-    image: 'https://source.unsplash.com/800x500/?laboratory,research',
+    image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&auto=format&fit=crop',
     summary: 'An NIH-funded research team reported preclinical results for a non-opioid pain compound with lower abuse liability in animal models. Human trials are years away but results were peer-reviewed.',
     fullArticle: [
       'Researchers funded by the U.S. National Institutes of Health reported new preclinical results for a non-opioid pain compound that showed pain-relief activity comparable to a standard opioid reference in two rodent models, with a markedly lower self-administration signal in a separate abuse-liability assay.',
@@ -225,7 +226,7 @@ const ARTICLES = [
     source: 'BBC / Reuters',
     sourceLabel: 'BBC',
     date: '2026-04-19',
-    image: 'https://source.unsplash.com/800x500/?parliament,politics',
+    image: 'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=800&auto=format&fit=crop',
     summary: 'UK ministers are reviewing options for asylum accommodation amid renewed scrutiny of hotel use and proposed alternative sites. Local authorities and campaign groups have taken contrasting positions.',
     fullArticle: [
       'The UK government is reviewing its estate of asylum-seeker accommodation following a Cabinet-level meeting this week, with ministers weighing a reduction in hotel use against the capacity of proposed alternative sites. The Home Office said a fuller update would be given to Parliament before the summer recess.',
@@ -248,7 +249,7 @@ const ARTICLES = [
     source: 'Reuters',
     sourceLabel: 'Reuters',
     date: '2026-04-18',
-    image: 'https://source.unsplash.com/800x500/?kyiv,ukraine',
+    image: 'https://images.unsplash.com/photo-1526470498-9ae73c665de8?w=800&auto=format&fit=crop',
     summary: 'Russia and Ukraine exchanged public accusations following overnight strikes on urban areas, as European and U.S. envoys pushed for narrower talks focused on sparing civilian infrastructure.',
     fullArticle: [
       'Russia and Ukraine traded public accusations on Friday after a series of overnight strikes in and around Kyiv damaged residential buildings and a power substation. Emergency services reported a small number of injuries and no confirmed fatalities by late morning. Both governments blamed the other for targeting civilian areas.',
