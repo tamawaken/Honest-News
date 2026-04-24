@@ -274,6 +274,8 @@ const SOURCE_MIX = {
 };
 const SOURCE_FILTER_KEY = 'tnm-source-filters';
 let selectedSources = new Set();
+let sourceSelectionInitialized = false;
+let lastModalTrigger = null;
 
 function getSourceMix(article) {
   return SOURCE_MIX[article.id] || { left: 33, center: 34, right: 33 };
@@ -294,7 +296,8 @@ function filterArticles(cat) {
   const byCategory = !cat || cat === 'all'
     ? ARTICLES.slice()
     : ARTICLES.filter((a) => String(a.category).toLowerCase() === cat);
-  if (selectedSources.size === 0) return byCategory;
+  if (!sourceSelectionInitialized) return byCategory;
+  if (selectedSources.size === 0) return [];
   return byCategory.filter((a) => selectedSources.has(a.sourceLabel || a.source));
 }
 
@@ -353,12 +356,16 @@ function renderArticles() {
   if (!grid) return;
   const cat = readHashCat();
   const filtered = filterArticles(cat);
+  const emptyMessage = sourceSelectionInitialized && selectedSources.size === 0
+    ? 'No sources selected. Use "All" or pick at least one source above.'
+    : 'Try another topic from the filter row above.';
   grid.innerHTML = filtered.length
     ? filtered.map(renderArticleCard).join('')
-    : `<article class="news-card empty"><div class="news-content"><h3 class="news-title">No stories in this category</h3><p class="news-summary">Try another topic from the filter row above.</p></div></article>`;
+    : `<article class="news-card empty"><div class="news-content"><h3 class="news-title">No stories match this filter</h3><p class="news-summary">${escapeHtml(emptyMessage)}</p></div></article>`;
 
   $$('[data-open-article]', grid).forEach((btn) => {
     btn.addEventListener('click', (e) => {
+      lastModalTrigger = e.currentTarget;
       const id = e.currentTarget.getAttribute('data-open-article');
       openArticleModal(id);
     });
@@ -368,7 +375,11 @@ function renderArticles() {
     card.addEventListener('click', (e) => {
       if (e.target.closest('button, a')) return;
       const id = card.getAttribute('data-id');
-      if (id) openArticleModal(id);
+      if (id) {
+        const fallbackBtn = card.querySelector('[data-open-article]');
+        if (fallbackBtn) lastModalTrigger = fallbackBtn;
+        openArticleModal(id);
+      }
     });
   });
 }
@@ -467,7 +478,9 @@ function initSourceSelector() {
   const options = allSourceOptions();
   if (options.length === 0) return;
   const stored = readStoredSourceSelection();
-  selectedSources = stored && stored.size ? stored : new Set(options);
+  selectedSources = stored ? new Set([...stored].filter((value) => options.includes(value))) : new Set(options);
+  if (!selectedSources.size && !stored) selectedSources = new Set(options);
+  sourceSelectionInitialized = true;
   renderSourceSelector();
 }
 
@@ -484,7 +497,7 @@ function openArticleModal(id) {
   if (heroImg) {
     heroImg.style.display = '';
     heroImg.src = article.image;
-    heroImg.alt = '';
+    heroImg.alt = article.title || 'Article image';
   }
 
   $('#article-modal-tag').textContent = article.category;
@@ -530,6 +543,10 @@ function closeArticleModal() {
   if (!modal) return;
   modal.hidden = true;
   document.body.classList.remove('modal-open');
+  if (lastModalTrigger && typeof lastModalTrigger.focus === 'function') {
+    lastModalTrigger.focus();
+  }
+  lastModalTrigger = null;
 }
 
 function initModal() {
