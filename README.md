@@ -1,19 +1,20 @@
-# Honest News
+# The News Meta
 
-Honest News is a transparency-first news analysis demo that compares how topics are framed across outlets. It combines category-based browsing, live-feed augmentation, and integrity verification tooling in a fast static frontend.
+The News Meta is a transparency-first news analysis demo that compares how topics are framed across outlets. It combines category-based browsing, source-selection controls, and integrity verification tooling in a fast static frontend.
 
 ## What This Demo Shows
 
 - Multi-category news cards (`tech`, `ai`, `space`, `crypto`, `climate`, `health`, `energy`, `politics`)
-- Live-news enrichment per category with local fallback content
-- Clear UI signaling for freshness (`LIVE` badge vs fallback)
+- Reader-selectable source inclusion for processing/display
+- Pipeline scaffold for provider ingestion, clustering, linguistic analysis, factual core extraction, and meta-article assembly (`pipeline/`)
+- Signed output handoff into Ed25519-compatible article artifacts
 - Reader-facing methodology, editorial policy, and corrections pages
 - Browser-side verification flow for signed analysis artifacts (when key/signature files are present)
 
 ## Project Structure
 
 - `index.html` - main feed UI
-- `app.js` - rendering, filtering, live-feed integration, verification logic
+- `app.js` - rendering, filtering, source selection, modal behavior
 - `style.css` - responsive styling and accessibility-focused UI patterns
 - `articles/` - manifest and article JSON data used by the demo
 - `verify.html` - file integrity verification UI
@@ -24,6 +25,7 @@ Honest News is a transparency-first news analysis demo that compares how topics 
 - `publish-checklist.html` - deployment QA checklist
 - `keys/README.md` - required verification key/signature expectations
 - `old documents/` - archived internal and historical files
+- `pipeline/` - staged processing pipeline scaffold (provider adapters, API/LLM placeholders, deterministic logic, signing handoff)
 
 ## Run Locally
 
@@ -39,9 +41,19 @@ Then open:
 
 `http://localhost:8000`
 
-## Live Feed Behavior
+## Pipeline + Signing
 
-The app attempts to fetch one current item per core category from external feeds. If any live request fails, the app automatically falls back to local manifest/article data so the demo remains stable.
+Generate local pipeline output:
+
+```bash
+node "./pipeline/run-local.mjs"
+```
+
+Generate and hand off signed article output:
+
+```bash
+TNM_HANDOFF_SIGN=1 node "./pipeline/run-local.mjs"
+```
 
 ## Verification Notes
 

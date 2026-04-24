@@ -67,27 +67,27 @@
     <section class="content-shell">
       <article class="content-panel">
         <h2>1. Gather coverage across the spectrum</h2>
-        <p>We start by pulling reporting from left, center, and right outlets on the same story so the final article is grounded in a real spread of editorial viewpoints rather than a single narrative lane.</p>
+        <p>We ingest reporting through configured provider adapters (NewsAPI, GNews, or MediaStack), then normalize each item into one shared article shape for downstream processing.</p>
 
         <h3>2. Score the source mix</h3>
-        <p>Each story gets a visible source-mix bar. Readers can see at a glance whether a synthesis leans on a balanced spread or on a narrower set of sources.</p>
+        <p>Each source is mapped using a static source rating table and bucketed into left, center, or right. Readers can choose which sources are included, and the resulting source-mix bar updates to match that selection.</p>
 
         <h3>3. Synthesize a readable article</h3>
-        <p>We publish a coherent article that prioritises shared facts, preserves unresolved tension points, and avoids pretending that contested reporting is already settled.</p>
+        <p>The pipeline clusters related coverage for one event, runs deterministic linguistic analysis, and builds a factual core of agreements, contested points, and lean-specific claims before synthesis.</p>
 
         <h3>4. Summarise framing differences</h3>
         <p>Every story includes left, center, and right framing summaries so readers can compare emphasis, omission, and tone without needing to open six browser tabs.</p>
 
         <h3>5. Expose the verification trail</h3>
-        <p>Each article points readers to a processing file that explains the source scoring, weighting approach, and verification materials used for integrity checks.</p>
+        <p>Each processed output is canonicalized and signed with Ed25519 during handoff. The published processing file and detached signature can be checked against the public key in the verify workflow.</p>
 
         <div class="content-callout">
           <p class="content-callout-label">Example workflow</p>
-          <pre>Story collected from 6 outlets
-Source mix scored: 33% left / 34% center / 33% right
-Balanced article synthesized from overlapping reported facts
-Framing boxes generated for left / center / right emphasis
-Processing trail published for verification</pre>
+          <pre>Topic fetched through provider adapter (or local sample mode)
+Sources classified with static left / center / right ratings
+Deterministic language + factual-core stages run on clustered coverage
+Meta article generated with framing comparison and omissions view
+Canonical output signed and published with detached verification signature</pre>
         </div>
       </article>
     </section>

@@ -67,25 +67,26 @@
     <section class="content-shell">
       <article class="content-panel">
         <h2>Source selection</h2>
-        <p>Each story begins with a spread of relevant reporting across left, center, and right outlets. We prioritise direct reporting, identifiable sourcing, and a broad enough spread to show where the coverage aligns and where it diverges.</p>
+        <p>Each story begins with a spread of relevant reporting across left, center, and right outlets. In production mode, ingestion runs through provider adapters (NewsAPI, GNews, or MediaStack), and each item is normalized before analysis.</p>
 
         <h3>Source scoring</h3>
-        <p>Sources are grouped into left, center, and right buckets for comparison. We then assess the mix used for synthesis and expose that split directly on every story card and inside the article view.</p>
+        <p>Sources are grouped into left, center, and right buckets using a static human-rated lookup table. We then assess the mix used for synthesis and expose that split directly on every story card and inside the article view.</p>
 
         <h3>Article synthesis</h3>
-        <p>The published article is a balanced synthesis of the available reporting, not a verbatim lift from any single outlet. The aim is clarity: establish the shared facts first, surface the tension points second, and preserve visible disagreements where the reporting remains contested.</p>
+        <p>The published article is a balanced synthesis of the available reporting, not a verbatim lift from any single outlet. The pipeline prioritizes shared facts first, then contested framing, and finally unresolved differences across source buckets.</p>
 
         <h3>Framing analysis</h3>
-        <p>Every story includes concise framing summaries for left, center, and right coverage. These are descriptive snapshots of emphasis and editorial posture, intended to help readers inspect narrative differences rather than flatten them into a single score.</p>
+        <p>Every story includes concise framing summaries for left, center, and right coverage. Loaded language, attribution density, and emotional trend are computed deterministically so the analysis path remains auditable.</p>
 
         <h3>Verification</h3>
-        <p>The News Meta publishes a processing trail for each story and, where available, supporting cryptographic material for integrity checks. The verification workflow is designed to let readers inspect the process, not just the conclusion.</p>
+        <p>The News Meta publishes a processing trail for each story and signs canonical output with Ed25519 as part of handoff. The verification workflow is designed to let readers inspect integrity of published artifacts, not just the conclusion.</p>
 
         <h3>Known limits</h3>
         <ul class="content-list">
           <li>Source diversity changes by topic and by news cycle.</li>
           <li>Some stories have stronger center coverage than clear left/right counterparts.</li>
           <li>Framing summaries are editorial interpretations of emphasis, not verdicts on truth.</li>
+          <li>LLM extraction and narrative-generation slots remain explicit placeholders until integrated.</li>
           <li>Verification proves integrity of the published file, not the correctness of every source.</li>
         </ul>
       </article>

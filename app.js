@@ -272,6 +272,8 @@ const SOURCE_MIX = {
   'healey-asylum-seekers': { left: 33, center: 31, right: 36 },
   'zelensky-kyiv-attack': { left: 30, center: 37, right: 33 }
 };
+const SOURCE_FILTER_KEY = 'tnm-source-filters';
+let selectedSources = new Set();
 
 function getSourceMix(article) {
   return SOURCE_MIX[article.id] || { left: 33, center: 34, right: 33 };
@@ -289,8 +291,11 @@ function setHashCat(cat) {
 }
 
 function filterArticles(cat) {
-  if (!cat || cat === 'all') return ARTICLES.slice();
-  return ARTICLES.filter((a) => String(a.category).toLowerCase() === cat);
+  const byCategory = !cat || cat === 'all'
+    ? ARTICLES.slice()
+    : ARTICLES.filter((a) => String(a.category).toLowerCase() === cat);
+  if (selectedSources.size === 0) return byCategory;
+  return byCategory.filter((a) => selectedSources.has(a.sourceLabel || a.source));
 }
 
 function renderSourceMix(article, options = {}) {
@@ -385,6 +390,85 @@ function initCategoryFilters() {
   });
   window.addEventListener('hashchange', sync);
   sync();
+}
+
+function allSourceOptions() {
+  return [...new Set(ARTICLES.map((article) => article.sourceLabel || article.source))].sort();
+}
+
+function readStoredSourceSelection() {
+  try {
+    const raw = localStorage.getItem(SOURCE_FILTER_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return null;
+    return new Set(parsed.filter((value) => typeof value === 'string' && value.trim()));
+  } catch (_error) {
+    return null;
+  }
+}
+
+function persistSourceSelection() {
+  localStorage.setItem(SOURCE_FILTER_KEY, JSON.stringify([...selectedSources]));
+}
+
+function renderSourceSelector() {
+  const root = $('#source-selector');
+  if (!root) return;
+  const options = allSourceOptions();
+  root.innerHTML = `
+    <div class="source-selector-head">
+      <span class="source-selector-label">Reader source selection</span>
+      <div class="source-selector-actions">
+        <button class="source-action" type="button" data-source-action="all">All</button>
+        <button class="source-action" type="button" data-source-action="none">None</button>
+      </div>
+    </div>
+    <div class="source-selector-chips">
+      ${options.map((source) => `
+        <label class="source-chip ${selectedSources.has(source) ? 'active' : ''}">
+          <input type="checkbox" value="${escapeAttr(source)}" ${selectedSources.has(source) ? 'checked' : ''}>
+          <span>${escapeHtml(source)}</span>
+        </label>
+      `).join('')}
+    </div>
+  `;
+
+  $$('input[type="checkbox"]', root).forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        selectedSources.add(checkbox.value);
+      } else {
+        selectedSources.delete(checkbox.value);
+      }
+      persistSourceSelection();
+      renderSourceSelector();
+      renderArticles();
+    });
+  });
+
+  $$('[data-source-action]', root).forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const action = btn.getAttribute('data-source-action');
+      const optionsNow = allSourceOptions();
+      if (action === 'all') {
+        selectedSources = new Set(optionsNow);
+      } else if (action === 'none') {
+        selectedSources = new Set();
+      }
+      persistSourceSelection();
+      renderSourceSelector();
+      renderArticles();
+    });
+  });
+}
+
+function initSourceSelector() {
+  const options = allSourceOptions();
+  if (options.length === 0) return;
+  const stored = readStoredSourceSelection();
+  selectedSources = stored && stored.size ? stored : new Set(options);
+  renderSourceSelector();
 }
 
 /* =========================================================
@@ -518,6 +602,7 @@ window.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initTopDate();
   initHeaderScroll();
+  initSourceSelector();
   initCategoryFilters();
   initModal();
 });
