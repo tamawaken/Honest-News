@@ -1,15 +1,7 @@
-/* Honest News — Phase 1 static build */
-'use strict';
+ 'use strict';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => root.querySelectorAll(sel);
-
-/* =========================================================
-   ARTICLES — hardcoded Phase 1 content
-   Slugs match existing articles/20251029/ files for continuity.
-   Images: Unsplash CDN (https://images.unsplash.com/photo-<id>).
-   All URLs verified 200 before commit.
-   ========================================================= */
 
 const ARTICLES = [
   {
@@ -267,11 +259,23 @@ const ARTICLES = [
   }
 ];
 
-/* =========================================================
-   CATEGORY FILTER + RENDER
-   ========================================================= */
+const SOURCE_MIX = {
+  'apple-quantum-m5': { left: 34, center: 33, right: 33 },
+  'nvidia-chip-export-rules': { left: 31, center: 36, right: 33 },
+  'ai-governance-framework': { left: 36, center: 34, right: 30 },
+  'openai-gpt5': { left: 32, center: 35, right: 33 },
+  'spacex-quantum-satellite': { left: 28, center: 42, right: 30 },
+  'bitcoin-150k': { left: 30, center: 31, right: 39 },
+  'carbon-capture-40pct': { left: 38, center: 33, right: 29 },
+  'fusion-power-24hr': { left: 37, center: 35, right: 28 },
+  'gene-therapy-neurodegenerative': { left: 34, center: 39, right: 27 },
+  'healey-asylum-seekers': { left: 33, center: 31, right: 36 },
+  'zelensky-kyiv-attack': { left: 30, center: 37, right: 33 }
+};
 
-const ALL_CATEGORIES = ['All', 'Tech', 'AI', 'Space', 'Crypto', 'Climate', 'Health', 'Energy', 'Politics'];
+function getSourceMix(article) {
+  return SOURCE_MIX[article.id] || { left: 33, center: 34, right: 33 };
+}
 
 function readHashCat() {
   const params = new URLSearchParams(window.location.hash.slice(1));
@@ -289,6 +293,35 @@ function filterArticles(cat) {
   return ARTICLES.filter((a) => String(a.category).toLowerCase() === cat);
 }
 
+function renderSourceMix(article, options = {}) {
+  const mix = getSourceMix(article);
+  const label = options.label || 'Source mix';
+  const detailed = Boolean(options.detailed);
+  const percentages = [
+    { name: 'Left', key: 'left', value: mix.left },
+    { name: 'Center', key: 'center', value: mix.center },
+    { name: 'Right', key: 'right', value: mix.right }
+  ];
+
+  return `
+    <div class="source-mix ${detailed ? 'is-detailed' : ''}">
+      <div class="source-mix-header">
+        <span class="source-mix-label">${escapeHtml(label)}</span>
+        <span class="source-mix-percent-group">
+          ${percentages
+            .map((item) => `<span class="source-mix-percent">${item.value}% ${item.name}</span>`)
+            .join('')}
+        </span>
+      </div>
+      <div class="source-mix-bar" aria-hidden="true">
+        <span class="source-mix-segment left" style="width:${mix.left}%"></span>
+        <span class="source-mix-segment center" style="width:${mix.center}%"></span>
+        <span class="source-mix-segment right" style="width:${mix.right}%"></span>
+      </div>
+    </div>
+  `;
+}
+
 function renderArticleCard(article) {
   return `
   <article class="news-card" data-id="${escapeAttr(article.id)}">
@@ -301,6 +334,7 @@ function renderArticleCard(article) {
     </div>
     <div class="news-content">
       <p class="news-meta">${escapeHtml(article.source)} · ${escapeHtml(article.date)}</p>
+      ${renderSourceMix(article)}
       <p class="news-summary">${escapeHtml(article.summary)}</p>
       <div class="actions">
         <button class="btn btn-primary" data-open-article="${escapeAttr(article.id)}" type="button">Read Coverage</button>
@@ -372,6 +406,7 @@ function openArticleModal(id) {
   $('#article-modal-tag').textContent = article.category;
   $('#article-modal-title').textContent = article.title;
   $('#article-modal-meta').textContent = `${article.source} · ${article.date}`;
+  $('#article-modal-source-score').innerHTML = renderSourceMix(article, { label: 'Source score', detailed: true });
 
   const body = $('#article-modal-body');
   if (body) {
@@ -380,29 +415,19 @@ function openArticleModal(id) {
       .join('');
   }
 
-  const markerPosition = (() => {
-    const text = `${article.bias?.left || ''} ${article.bias?.center || ''} ${article.bias?.right || ''}`.toLowerCase();
-    let bias = 0.5;
-    if (/emphasis|centres|celebrates|focuses on worker|civil society/.test(text)) bias -= 0.05;
-    if (/competitiveness|cost|private sector|stricter controls/.test(text)) bias += 0.05;
-    return Math.max(0.1, Math.min(0.9, bias));
-  })();
-  const marker = $('#article-modal-marker');
-  if (marker) marker.style.left = `${Math.round(markerPosition * 100)}%`;
-
   const compare = $('#article-modal-sources');
   if (compare) {
     compare.innerHTML = `
       <article class="source-card" data-lean="left">
-        <h5><span class="source-pill lean-left">Left-leaning</span></h5>
+        <h5>Left framing</h5>
         <p>${escapeHtml(article.bias?.left || 'Left-leaning framing not summarised for this story.')}</p>
       </article>
       <article class="source-card" data-lean="center">
-        <h5><span class="source-pill lean-center">Center</span></h5>
+        <h5>Center framing</h5>
         <p>${escapeHtml(article.bias?.center || 'Centrist framing not summarised for this story.')}</p>
       </article>
       <article class="source-card" data-lean="right">
-        <h5><span class="source-pill lean-right">Right-leaning</span></h5>
+        <h5>Right framing</h5>
         <p>${escapeHtml(article.bias?.right || 'Right-leaning framing not summarised for this story.')}</p>
       </article>
     `;
@@ -435,17 +460,13 @@ function initModal() {
   });
 }
 
-/* =========================================================
-   THEME TOGGLE — light default, dark is opt-in
-   ========================================================= */
-
 function initTheme() {
   const root = document.documentElement;
   const body = document.body;
   const btn = $('#themeToggle');
-  const key = 'hn-theme';
+  const key = 'tnm-theme';
   const saved = localStorage.getItem(key);
-  const initial = saved === 'dark' ? 'dark' : 'light';
+  const initial = saved === 'light' ? 'light' : 'dark';
   const apply = (theme) => {
     root.setAttribute('data-theme', theme);
     if (body) body.setAttribute('data-theme', theme);
@@ -454,7 +475,7 @@ function initTheme() {
   apply(initial);
   if (btn) {
     btn.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme') || 'light';
+      const current = root.getAttribute('data-theme') || 'dark';
       const next = current === 'dark' ? 'light' : 'dark';
       localStorage.setItem(key, next);
       apply(next);
@@ -473,9 +494,15 @@ function initTopDate() {
   });
 }
 
-/* =========================================================
-   UTILS
-   ========================================================= */
+function initHeaderScroll() {
+  const header = $('#siteHeader');
+  if (!header) return;
+  const sync = () => {
+    header.classList.toggle('is-condensed', window.scrollY > 48);
+  };
+  sync();
+  window.addEventListener('scroll', sync, { passive: true });
+}
 
 function escapeHtml(s = '') {
   return String(s).replace(/[&<>"']/g, (m) => ({
@@ -487,13 +514,10 @@ function escapeAttr(s = '') {
   return escapeHtml(s);
 }
 
-/* =========================================================
-   BOOT
-   ========================================================= */
-
 window.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initTopDate();
+  initHeaderScroll();
   initCategoryFilters();
   initModal();
 });
