@@ -15,6 +15,7 @@ pipeline:
 - Provider adapter layer is in place (`newsapi`, `gnews`, `mediastack`) with env-driven config.
 - LLM extraction/generation is placeholder-only.
 - Deterministic analysis is implemented and auditable.
+- Manual deterministic processing was strengthened for claim dedupe, opinion-phrase detection, and neutral-term replacement previews.
 - Pipeline can run against local sample data today.
 
 ## Files

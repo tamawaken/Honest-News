@@ -43,6 +43,25 @@ const NEGATIVE_WORDS = new Set([
   "harm"
 ]);
 
+const OPINION_PATTERNS = [
+  /\bobviously\b/i,
+  /\bundoubtedly\b/i,
+  /\bof course\b/i,
+  /\beveryone knows\b/i,
+  /\bthe truth is\b/i,
+  /\bwithout doubt\b/i
+];
+
+const NEUTRAL_REPLACEMENTS = {
+  slammed: "criticised",
+  blasted: "criticised",
+  controversial: "debated",
+  radical: "major",
+  regime: "government",
+  flood: "increase",
+  destroying: "changing"
+};
+
 function tokenize(text) {
   return text
     .toLowerCase()
@@ -149,6 +168,34 @@ function estimateEmphasis(paragraphs) {
   return buckets;
 }
 
+function countOpinionSentences(text) {
+  const sentences = text
+    .split(/(?<=[.!?])\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  let count = 0;
+  for (const sentence of sentences) {
+    if (OPINION_PATTERNS.some((pattern) => pattern.test(sentence))) count += 1;
+  }
+  return count;
+}
+
+function neutralizeLoadedTerms(text) {
+  let out = text;
+  let replacementCount = 0;
+  for (const [term, replacement] of Object.entries(NEUTRAL_REPLACEMENTS)) {
+    const pattern = new RegExp(`\\b${term}\\b`, "gi");
+    out = out.replace(pattern, (match) => {
+      replacementCount += 1;
+      if (!replacement) return match;
+      return match[0] === match[0].toUpperCase()
+        ? replacement[0].toUpperCase() + replacement.slice(1)
+        : replacement;
+    });
+  }
+  return { text: out, replacementCount };
+}
+
 export function analyzeArticleLinguistics(article) {
   const paragraphs = splitParagraphs(article.full_text);
   const tokens = tokenize(article.full_text);
@@ -158,6 +205,8 @@ export function analyzeArticleLinguistics(article) {
   const emotionalPeak = emotionalCurve.length ? Math.max(...emotionalCurve) : 0;
   const emotionalTrend = classifyEmotionalTrend(emotionalCurve);
   const framingRoles = detectAgentPatient(article.headline);
+  const opinionSentenceCount = countOpinionSentences(article.full_text);
+  const neutralized = neutralizeLoadedTerms(article.full_text);
   return {
     loaded_language_score: Number(loaded.score.toFixed(3)),
     loaded_words_found: [...new Set(loaded.found)],
@@ -170,6 +219,9 @@ export function analyzeArticleLinguistics(article) {
     attribution_density: Number(attributionDensity.toFixed(3)),
     emotional_curve: emotionalCurve,
     emotional_peak: Number(emotionalPeak.toFixed(3)),
-    emotional_trend: emotionalTrend
+    emotional_trend: emotionalTrend,
+    opinion_sentence_count: opinionSentenceCount,
+    neutralized_preview: neutralized.text.slice(0, 240),
+    neutralized_replacement_count: neutralized.replacementCount
   };
 }
