@@ -1,1 +1,13 @@
 .DS_Store
+
+# Local/private signing material
+keys/private_key_secret.b64
+keys/public_key.b64
+
+# Generated local outputs
+pipeline/output/*.json
+articles/*/evt_*.json
+articles/*/evt_*.sig
+
+# Local standalone drafts
+Honest News - Standalone.html
